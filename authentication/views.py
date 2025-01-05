@@ -34,7 +34,7 @@ def login_view(request):
                 messages.error(request, "رمز عبور نادرست است.")
         except User.DoesNotExist:
             messages.error(request, "کاربری با این شماره تلفن یافت نشد.")
-        return redirect('authentication:login_view')
+        return redirect('HomeApp:home')
 
     return render(request, 'parent/base.html')
 

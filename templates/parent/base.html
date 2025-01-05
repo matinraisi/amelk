@@ -98,7 +98,7 @@
                                         action="{% url 'authentication:login_view' %}" accept-charset="utf-8">
                                         {% csrf_token %}
                                         <fieldset>
-                                            <label class="fw-6">تلفت همراه</label>
+                                            <label class="fw-6">تلفن همراه</label>
                                             <input type="text" id="phone_number" class="tb-my-input" name="phone_number"
                                                 placeholder="نام کاربری یا شماره تلفن همراه">
                                             <img class="img-icon img-email"
@@ -124,6 +124,15 @@
 
                                 </div>
                             </div>
+                            {% if messages %}
+                            <div class="messages">
+                                {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }} alert-danger fade show" role="alert">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                             <div class="text-box text-center fs-13">حساب کاربری ندارید؟ <a
                                     class="font-2 fw-7 fs-13 color-popup text-color-3" data-bs-toggle="modal"
                                     data-bs-target="#popup_bid2" data-bs-dismiss="modal" aria-label="Close">عضویت</a>
@@ -162,6 +171,7 @@
                                 </a>
                             </div> -->
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -251,6 +261,7 @@
 
                                 </div>
                             </div>
+                           
                             <div class="text-box text-center fs-13">قبلا ثبت نام کردید؟<a
                                     class="font-2 fw-7 fs-13 color-popup text-color-3" data-bs-toggle="modal"
                                     data-bs-target="#popup_bid" data-bs-dismiss="modal" aria-label="Close">ورود</a>
@@ -294,6 +305,7 @@
             </div>
         </div>
     </div>
+
 
     <a id="scroll-top" class="button-go"></a>
 
