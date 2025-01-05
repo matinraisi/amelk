@@ -133,3 +133,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # تنظیمات مربوط به مدل کاربر سفارشی
 # AUTH_USER_MODEL = 'authentication.CustomUser'
+AUTH_USER_MODEL = 'authentication.User'
+

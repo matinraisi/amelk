@@ -94,29 +94,34 @@
                             <div class="title-login fs-30 fw-7 lh-45">ورود</div>
                             <div class="comments">
                                 <div class="respond-comment">
-                                    <form method="post" class="comment-form form-submit" action="{% url 'authentication:login_view' %}" accept-charset="utf-8">
+                                    <form method="post" class="comment-form form-submit"
+                                        action="{% url 'authentication:login_view' %}" accept-charset="utf-8">
                                         {% csrf_token %}
                                         <fieldset>
                                             <label class="fw-6">تلفت همراه</label>
-                                            <input type="text" id="phone_number" class="tb-my-input" name="phone_number" placeholder="نام کاربری یا شماره تلفن همراه">
-                                            <img class="img-icon img-email" src="{% static 'assets/images/icon/icon-gmail.svg' %}" alt="images">
+                                            <input type="text" id="phone_number" class="tb-my-input" name="phone_number"
+                                                placeholder="نام کاربری یا شماره تلفن همراه">
+                                            <img class="img-icon img-email"
+                                                src="{% static 'assets/images/icon/icon-gmail.svg' %}" alt="images">
                                         </fieldset>
-                                    
+
                                         <fieldset class="style-wrap">
                                             <label class="fw-6">رمز عبور</label>
-                                            <input type="password" class="input-form password-input" name="password" placeholder="رمز عبور شما">
-                                            <img class="img-icon" src="{% static 'assets/images/icon/icon-password.svg' %}" alt="images">
+                                            <input type="password" class="input-form password-input" name="password"
+                                                placeholder="رمز عبور شما">
+                                            <img class="img-icon"
+                                                src="{% static 'assets/images/icon/icon-password.svg' %}" alt="images">
                                         </fieldset>
-                                    
+
                                         <div class="title-forgot">
                                             <a class="fs-13" href="#">فراموشی رمز</a>
                                         </div>
-                                    
+
                                         <button class="sc-button" name="submit" type="submit">
                                             <span>ورود</span>
                                         </button>
                                     </form>
-                                    
+
                                 </div>
                             </div>
                             <div class="text-box text-center fs-13">حساب کاربری ندارید؟ <a
@@ -182,55 +187,66 @@
                             <div class="comments">
                                 <div class="respond-comment">
                                     <!-- register form -->
-<!-- templates/authentication/register.html -->
-<form method="post" class="comment-form form-submit" action="{% url 'authentication:register_view' %}" accept-charset="utf-8" novalidate="novalidate">
-    {% csrf_token %}
-    <fieldset>
-        <label class="fw-6">شماره تلفن همراه</label>
-        <input type="text" class="tb-my-input" name="phone_number" placeholder="شماره همراه" minlength="11" maxlength="11" value="{{ form.phone_number.value }}">
-        {% if form.phone_number.errors %}
-            <div class="errors">{{ form.phone_number.errors }}</div>
-        {% endif %}
-        <img class="img-icon img-name" src="{% static 'assets/images/icon/login-user.svg' %}" alt="images">
-    </fieldset>
+                                    <!-- templates/authentication/register.html -->
+                                    <form method="post" class="comment-form form-submit"
+                                        action="{% url 'authentication:register_view' %}" accept-charset="utf-8"
+                                        novalidate="novalidate">
+                                        {% csrf_token %}
+                                        <fieldset>
+                                            <label class="fw-6">شماره تلفن همراه</label>
+                                            <input type="text" class="tb-my-input" name="phone_number"
+                                                placeholder="شماره همراه" minlength="11" maxlength="11"
+                                                value="{{ form.phone_number.value }}">
+                                            {% if form.phone_number.errors %}
+                                            <div class="errors">{{ form.phone_number.errors }}</div>
+                                            {% endif %}
+                                            <img class="img-icon img-name"
+                                                src="{% static 'assets/images/icon/login-user.svg' %}" alt="images">
+                                        </fieldset>
 
-    <fieldset class="t">
-        <label class="fw-6">ایمیل</label>
-        <input type="email" class="tb-my-input" name="email" placeholder="ایمیل .." value="{{ form.email.value }}">
-        {% if form.email.errors %}
-            <div class="errors">{{ form.email.errors }}</div>
-        {% endif %}
-        <img class="img-icon" src="{% static 'assets/images/icon/icon-gmail.svg' %}" alt="images">
-    </fieldset>
+                                        <fieldset class="t">
+                                            <label class="fw-6">ایمیل</label>
+                                            <input type="email" class="tb-my-input" name="email" placeholder="ایمیل .."
+                                                value="{{ form.email.value }}">
+                                            {% if form.email.errors %}
+                                            <div class="errors">{{ form.email.errors }}</div>
+                                            {% endif %}
+                                            <img class="img-icon" src="{% static 'assets/images/icon/icon-gmail.svg' %}"
+                                                alt="images">
+                                        </fieldset>
 
-    <fieldset>
-        <label class="fw-6">رمز عبور</label>
-        <input type="password" class="input-form password-input" name="password1" placeholder="رمز عبور">
-        {% if form.password1.errors %}
-            <div class="errors">{{ form.password1.errors }}</div>
-        {% endif %}
-        <img class="img-icon" src="{% static 'assets/images/icon/icon-password.svg' %}" alt="images">
-    </fieldset>
+                                        <fieldset>
+                                            <label class="fw-6">رمز عبور</label>
+                                            <input type="password" class="input-form password-input" name="password1"
+                                                placeholder="رمز عبور">
+                                            {% if form.password1.errors %}
+                                            <div class="errors">{{ form.password1.errors }}</div>
+                                            {% endif %}
+                                            <img class="img-icon"
+                                                src="{% static 'assets/images/icon/icon-password.svg' %}" alt="images">
+                                        </fieldset>
 
-    <fieldset>
-        <label class="fw-6">تایید رمز عبور</label>
-        <input type="password" class="input-form password-input" name="password2" placeholder="تایید رمز عبور">
-        {% if form.password2.errors %}
-            <div class="errors">{{ form.password2.errors }}</div>
-        {% endif %}
-        <img class="img-icon" src="{% static 'assets/images/icon/icon-password.svg' %}" alt="images">
-    </fieldset>
+                                        <fieldset>
+                                            <label class="fw-6">تایید رمز عبور</label>
+                                            <input type="password" class="input-form password-input" name="password2"
+                                                placeholder="تایید رمز عبور">
+                                            {% if form.password2.errors %}
+                                            <div class="errors">{{ form.password2.errors }}</div>
+                                            {% endif %}
+                                            <img class="img-icon"
+                                                src="{% static 'assets/images/icon/icon-password.svg' %}" alt="images">
+                                        </fieldset>
 
-    <button class="sc-button" name="submit" type="submit">
-        <span>ثبت نام</span>
-    </button>
-</form>
+                                        <button class="sc-button" name="submit" type="submit">
+                                            <span>ثبت نام</span>
+                                        </button>
+                                    </form>
 
-                                    
 
-                                    
 
-                                    
+
+
+
                                     <!-- register form -->
 
                                 </div>
@@ -292,4 +308,5 @@
     <script src="{% static 'assets/js/Price-ranger.html' %}"></script>
 
 </body>
+
 </html>
