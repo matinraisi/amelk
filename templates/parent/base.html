@@ -339,32 +339,31 @@
                 </button>
                 <div class="modal-body space-y-20 pd-40">
                     <div class="">
-                        <div class="title-login fs-30 fw-7 lh-45">فروش یک ملک</div>
+                        <div class="title-login fs-30 fw-7 lh-45"></div>
                         <div class="comments">
                             <div class="respond-comment">
-                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit assumenda, architecto
-                                    provident officiis vero, reprehenderit iste necessitatibus nemo voluptatum
-                                    consequuntur nulla deserunt illo eius! Officia voluptates earum corrupti
-                                    exercitationem sequi.
-                                    Corporis quod blanditiis eum similique itaque nisi voluptates temporibus?
-                                    Perferendis nostrum illo ex corrupti quia? Doloribus error eligendi, sequi
-                                    consequatur reiciendis autem! Iste, dolores tenetur? Dolores fugit quam eligendi
-                                    labore?
-                                    Dolores esse nesciunt pariatur dolor illo. Laudantium qui delectus, doloribus cumque
-                                    dolores minus quibusdam praesentium fugiat nemo, ullam quia ut aspernatur illo
-                                    inventore sint cupiditate culpa id maiores porro aliquid.
-                                    Optio, dolore illo voluptatem ullam voluptas eaque nostrum. Molestiae, voluptatem!
-                                    Consequatur libero unde, sint optio iure architecto itaque maiores corrupti
-                                    voluptatum doloribus, quisquam facere accusamus, id delectus vero fugiat nobis!
-                                    Libero, veniam? Nisi, doloremque ratione? Tenetur totam quae, autem vel veniam
-                                    dolor, voluptatem iure sint et voluptatibus accusamus repellendus dolore provident
-                                    facere officia fugiat eius similique reiciendis quod! Aspernatur, autem!
-                                    Optio facere iusto ad nesciunt maxime eligendi omnis officiis voluptate adipisci qui
-                                    eos, culpa repudiandae recusandae assumenda accusamus architecto iure cum fuga
-                                    quibusdam quo sit repellendus. Provident animi iste vero?</p>
-                                <button class="sc-button" name="submit" type="submit">
-                                    <span>ملک برای اجاره دارم</span>
-                                </button>
+                                <div class="messages"  style="margin: 60px;" >
+                                
+                                    <div class="" role="alert">
+                                       <h3>خانه خود را با اطمینان بفروشید</h3>
+                                       <h5>آملک ، فروش خانه شما و حرکت رو به جلو  را ساده تر میکند</h5>
+                                        <p style="margin-top :30" >زمانی که شما درخواست ملک خود را  در آملک ثبت کنید، آملک 
+                                            درخواست شما را مورد بررسی قرار داده و در اختیار یکی از بهترین
+                                            مشاورین املاک منطقه قرار میدهد  </p>
+                                    </div>
+
+                                </div>
+                                {% if user.is_authenticated %}
+                                <form method="POST" action="{% url 'HomeApp:create_sell_request' %}">
+                                    {% csrf_token %}
+                                    <button class="sc-button" name="submit" type="submit">
+                                        <span>ثبت درخواست</span>
+                                    </button>
+                                </form>
+                            {% else %}
+                                <p class="alert alert-danger" style ="text-align: center;" >برای ثبت درخواست، لطفاً وارد شوید</a>.</p>
+                            {% endif %}
+                            
                             </div>
                         </div>
                     </div>

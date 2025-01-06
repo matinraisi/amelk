@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from .models import Request
+from .models import *
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
 # صفحه اصلی
 def home(request):
     return render(request, 'home/home.html')
@@ -59,3 +59,9 @@ def Request_registration(request):
 
 def PropertiesList(request):
     return render(request, "home/properties-list.html")
+
+
+@login_required
+def create_sell_request(request):
+    SellRequest.objects.create(user=request.user)
+    return redirect('HomeApp:home')

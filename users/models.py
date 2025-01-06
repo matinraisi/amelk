@@ -1,3 +1,4 @@
+# users/models.py
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
 
@@ -24,11 +25,12 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(phone_number, email, password, **extra_fields)
 
-class User(AbstractBaseUser, PermissionsMixin):
+class User(AbstractBaseUser, PermissionsMixin):  # اضافه کردن PermissionsMixin
     phone_number = models.CharField(max_length=11, unique=True)
     email = models.EmailField(unique=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)  # اضافه کردن is_superuser
 
     objects = CustomUserManager()
 
@@ -37,5 +39,3 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.phone_number
-
-

@@ -41,8 +41,7 @@ INSTALLED_APPS = [
     
     # locall app
     'home',
-    'authentication',
-    
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -79,12 +78,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'amelk',  # نام پایگاه داده
+        'USER': 'postgres',  # نام کاربری PostgreSQL
+        'PASSWORD': '4826',  # رمز عبور
+        'HOST': 'localhost',  # آدرس سرور PostgreSQL (در صورت نصب محلی `localhost`)
+        'PORT': '5432',  # پورت پیش‌فرض PostgreSQL
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation
@@ -109,12 +120,10 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'fa-ir'
-
-# TIME_ZONE = 'UTC'
-TIME_ZONE = 'Asia/Tehran'
-USE_I18N = True
+LANGUAGE_CODE = 'fa'
+USE_I18N = True 
 USE_TZ = True
+TIME_ZONE = 'Asia/Tehran'
 
 
 
@@ -130,8 +139,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # تنظیمات مربوط به مدل کاربر سفارشی
-# AUTH_USER_MODEL = 'authentication.CustomUser'
-AUTH_USER_MODEL = 'authentication.User'
+AUTH_USER_MODEL = 'users.User'
+
 
