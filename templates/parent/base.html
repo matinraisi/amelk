@@ -127,12 +127,12 @@
                             {% if messages %}
                             <div class="messages">
                                 {% for message in messages %}
-                                    <div class="alert alert-{{ message.tags }} alert-danger fade show" role="alert">
-                                        {{ message }}
-                                    </div>
+                                <div class="alert alert-{{ message.tags }} alert-danger fade show" role="alert">
+                                    {{ message }}
+                                </div>
                                 {% endfor %}
                             </div>
-                        {% endif %}
+                            {% endif %}
                             <div class="text-box text-center fs-13">حساب کاربری ندارید؟ <a
                                     class="font-2 fw-7 fs-13 color-popup text-color-3" data-bs-toggle="modal"
                                     data-bs-target="#popup_bid2" data-bs-dismiss="modal" aria-label="Close">عضویت</a>
@@ -261,7 +261,7 @@
 
                                 </div>
                             </div>
-                           
+
                             <div class="text-box text-center fs-13">قبلا ثبت نام کردید؟<a
                                     class="font-2 fw-7 fs-13 color-popup text-color-3" data-bs-toggle="modal"
                                     data-bs-target="#popup_bid" data-bs-dismiss="modal" aria-label="Close">ورود</a>
@@ -305,7 +305,98 @@
             </div>
         </div>
     </div>
+    <!-- modal -->
+    <div class="modal fade popup" id="rentModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body space-y-20 pd-40">
+                    <div class="">
+                        <div class="title-login fs-30 fw-7 lh-45">اجاره</div>
+                        <div class="comments">
+                            <div class="respond-comment">
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>میخام ملک اجاره کنم</span>
+                                </button>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>ملک برای اجاره دارم</span>
+                                </button>
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade popup" id="selModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body space-y-20 pd-40">
+                    <div class="">
+                        <div class="title-login fs-30 fw-7 lh-45">فروش یک ملک</div>
+                        <div class="comments">
+                            <div class="respond-comment">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit assumenda, architecto
+                                    provident officiis vero, reprehenderit iste necessitatibus nemo voluptatum
+                                    consequuntur nulla deserunt illo eius! Officia voluptates earum corrupti
+                                    exercitationem sequi.
+                                    Corporis quod blanditiis eum similique itaque nisi voluptates temporibus?
+                                    Perferendis nostrum illo ex corrupti quia? Doloribus error eligendi, sequi
+                                    consequatur reiciendis autem! Iste, dolores tenetur? Dolores fugit quam eligendi
+                                    labore?
+                                    Dolores esse nesciunt pariatur dolor illo. Laudantium qui delectus, doloribus cumque
+                                    dolores minus quibusdam praesentium fugiat nemo, ullam quia ut aspernatur illo
+                                    inventore sint cupiditate culpa id maiores porro aliquid.
+                                    Optio, dolore illo voluptatem ullam voluptas eaque nostrum. Molestiae, voluptatem!
+                                    Consequatur libero unde, sint optio iure architecto itaque maiores corrupti
+                                    voluptatum doloribus, quisquam facere accusamus, id delectus vero fugiat nobis!
+                                    Libero, veniam? Nisi, doloremque ratione? Tenetur totam quae, autem vel veniam
+                                    dolor, voluptatem iure sint et voluptatibus accusamus repellendus dolore provident
+                                    facere officia fugiat eius similique reiciendis quod! Aspernatur, autem!
+                                    Optio facere iusto ad nesciunt maxime eligendi omnis officiis voluptate adipisci qui
+                                    eos, culpa repudiandae recusandae assumenda accusamus architecto iure cum fuga
+                                    quibusdam quo sit repellendus. Provident animi iste vero?</p>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>ملک برای اجاره دارم</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade popup" id="buyModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <div class="modal-body space-y-20 pd-40">
+                    <div class="">
+                        <div class="title-login fs-30 fw-7 lh-45">اجاره</div>
+                        <div class="comments">
+                            <div class="respond-comment">
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>میخام ملک اجاره کنم</span>
+                                </button>
+                                <button class="sc-button" name="submit" type="submit">
+                                    <span>ملک برای اجاره دارم</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <a id="scroll-top" class="button-go"></a>
 
@@ -318,7 +409,20 @@
     <script src="{% static 'assets/js/shortcodes.js' %}"></script>
     <script src="{% static 'assets/js/main.js' %}"></script>
     <script src="{% static 'assets/js/Price-ranger.html' %}"></script>
-
+    <script>
+        function openModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('rentModal'));
+            myModal.show();
+        }
+        function openModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('buyModal'));
+            myModal.show();
+        }
+        function openModal() {
+            var myModal = new bootstrap.Modal(document.getElementById('selModal'));
+            myModal.show();
+        }
+    </script>
 </body>
 
 </html>

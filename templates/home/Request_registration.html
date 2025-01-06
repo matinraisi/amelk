@@ -1,0 +1,509 @@
+{% extends "parent/base.html" %}
+{% load static %}
+{% block title %}amelk{% endblock title %}
+
+{% comment %} content {% endcomment %}
+{% block content %}
+
+<section class="flat-title">
+    <div class="container">
+        <div class="row">					  
+            <div class="col-lg-12">
+                <div class="title-inner">
+                    <div class="title-group fs-12"><a class="home fw-6 text-color-3" href="index-2.html">خانه</a><span >ثبت درخواست</span></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+
+
+<section class="flat-property-detail">
+    <div class="container">
+        <div class="row">					  
+
+        </div>
+    </div>
+    <div class="container6">
+        <div class="row">					  
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">					  
+            <div class="col-lg-12">
+                <div class="post">
+                    <div class="wrap-text wrap-style">
+                        <h3 class="titles">ثبت درخواست</h3>
+                        <h4>درخواست مشاوره و اطلاعات بیشتر</h4>
+                    </div>
+                    <div class="widget-tour widget-rent">
+                        <div class="flat-tabs style2">
+                            <div class="content-tab">
+                                <div class="content-inner tab-content">
+                                    <div class="comments">
+                                        <div class="comment-form">
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <div class="wd-find-select">
+                                                    <div class="group-select">
+                                                        <select class="nice-select" name="request_type">
+                                                            <option value="buy">خرید ملک</option>
+                                                            <option value="rent">اجاره</option>
+                                                            <option value="sell">فروش</option>
+                                                        </select>
+
+                                                    </div>
+                                                    <fieldset class="">
+                                                        <input type="text" class="" name="full_name" placeholder="نام و نام خانوادگی  .." required="">
+                                                    </fieldset>
+                                            
+                                                    <h3 class="titles">موقعیت مکانی</h3>
+                                            
+                                                    <fieldset class="message-wrap">
+                                                        <textarea name="location" rows="4" tabindex="4" placeholder="آدرس کامل، شهر یا محله"></textarea>
+                                                    </fieldset> 
+                                                    <h3 class="titles">قیمت یا بودجه</h3>
+                                                    <div class="inner-1 form-wg flex">
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداکثر قیمت</label>
+                                                            <input type="number" class="my-input" name="maxprice" required="">
+                                                        </fieldset>
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداقل قیمت</label>
+                                                            <input type="number" class="my-input2" name="minprice" required="">
+                                                        </fieldset>
+                                                    </div>
+                                                    <h3 class="titles">متراژ</h3>
+                                                    <div class="inner-1 form-wg flex">
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداکثر</label>
+                                                            <input type="number" class="my-input" name="max_metr" required="">
+                                                        </fieldset>
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداقل</label>
+                                                            <input type="number" class="my-input2" name="min_metr" required="">
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="wrap-featured wrap-style tf-amenities">
+                                                        <h3 class="titles">امکانات</h3>
+                                                        <div class="box-featured flex">
+                                                            <div class="inner-1">
+                                                                <div class="subtitle title-1 fw-6">ویژگی های فضای باز</div>
+                                                                <label class="flex">
+                                                                    <input name="pool" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">استخر</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="balcony" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">بالکن</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="closed_parking" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">پرکینگ رو بسته</span> 
+                                                                </label>
+                                                            </div>
+                                                            <div class="inner-2">
+                                                                <label class="flex"><input name="tennis_court" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">زمین تنیس</span>
+                                                                </label>
+                                                                <label class="flex"><input name="parking" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">پارکینگ</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="yard" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">حیاط</span> 
+                                                                </label>
+                                                            </div>
+                                                            <div class="inner-3">
+                                                                <div class="subtitle title-1 fw-6">ویژگی های داخلی</div>
+                                                                <label class="flex"><input name="suite" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">سوئیت</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="library" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">کتابخانه</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="alarm_system" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">سیستم هشدار</span> 
+                                                                </label>
+                                                            </div>
+                                                            <div class="inner-4">
+                                                                <label class="flex"><input name="dishwasher" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">ماشین ظرفشویی</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="parquet" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">پارکت</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="internet" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">اینترنت</span> 
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <h3 class="titles">تعداد خواب</h3>
+                                                    <div class="flat-tabs style2">
+                                                        <div class="box-tab center">
+                                                            <ul class="menu-tab tab-title flex" style="text-align: center; justify-content: space-evenly;">
+                                                                <li class="item-title flex align-center">
+                                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M7 10.75L9.25 13L13 7.75M19 10C19 11.1819 18.7672 12.3522 18.3149 13.4442C17.8626 14.5361 17.1997 15.5282 16.364 16.364C15.5282 17.1997 14.5361 17.8626 13.4442 18.3149C12.3522 18.7672 11.1819 19 10 19C8.8181 19 7.64778 18.7672 6.55585 18.3149C5.46392 17.8626 4.47177 17.1997 3.63604 16.364C2.80031 15.5282 2.13738 14.5361 1.68508 13.4442C1.23279 12.3522 1 11.1819 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                    <h4 class="inner">یک خواب</h4>
+                                                                </li>
+                                                                <li class="item-title flex align-center">
+                                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M7 10.75L9.25 13L13 7.75M19 10C19 11.1819 18.7672 12.3522 18.3149 13.4442C17.8626 14.5361 17.1997 15.5282 16.364 16.364C15.5282 17.1997 14.5361 17.8626 13.4442 18.3149C12.3522 18.7672 11.1819 19 10 19C8.8181 19 7.64778 18.7672 6.55585 18.3149C5.46392 17.8626 4.47177 17.1997 3.63604 16.364C2.80031 15.5282 2.13738 14.5361 1.68508 13.4442C1.23279 12.3522 1 11.1819 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                    <h4 class="inner">دو خواب</h4>
+                                                                </li>
+                                                                <li class="item-title flex align-center">
+                                                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path d="M7 10.75L9.25 13L13 7.75M19 10C19 11.1819 18.7672 12.3522 18.3149 13.4442C17.8626 14.5361 17.1997 15.5282 16.364 16.364C15.5282 17.1997 14.5361 17.8626 13.4442 18.3149C12.3522 18.7672 11.1819 19 10 19C8.8181 19 7.64778 18.7672 6.55585 18.3149C5.46392 17.8626 4.47177 17.1997 3.63604 16.364C2.80031 15.5282 2.13738 14.5361 1.68508 13.4442C1.23279 12.3522 1 11.1819 1 10C1 7.61305 1.94821 5.32387 3.63604 3.63604C5.32387 1.94821 7.61305 1 10 1C12.3869 1 14.6761 1.94821 16.364 3.63604C18.0518 5.32387 19 7.61305 19 10Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                                    </svg>
+                                                                    <h4 class="inner">سه خواب</h4>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <h3 class="titles mt-4">توضیحات درخواست</h3>
+
+                                                    <fieldset class="message-wrap">
+                                                        <textarea name="request_description" rows="4" tabindex="4" placeholder=""></textarea>
+                                                    </fieldset> 
+                                                    {% if user.is_authenticated %}
+                                                    <div class="button-box center">
+                                                        <button class="sc-button btn-icon2 one btn-svg center">
+                                                            ثبت درخواست
+                                                        </button>
+                                                        {% else %}
+                                                            <p>برای ثبت درخواست باید وارد سیستم شوید.</p>
+                                                        {% endif %}
+                                                    </div> 
+                                                </div>
+                                            </form>
+                                            
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="flat-sale-detail flat-sale wg-dream wg-dots tf-section">
+    <div class="container">
+        <div class="row">					  
+            <div class="col-lg-12">
+                <div class="heading-section">
+                   <div class="title-heading fs-30 lh-45 fw-7">فایل‌های ویژه</div>
+                    <p class="text-color-4">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
+                </div>
+                <div class="swiper-container2">	
+                    <div class="one-carousel owl-carousel owl-theme">
+                        <div class="slide-item">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span>
+                                    <span class="featured style fs-12 fw-6">برای فروش</span>
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-21.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-1.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span> 
+                                    <span class="featured style fs-12 fw-6">برای فروش</span> 
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-22.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-2.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span>
+                                    <span class="featured style fs-12 fw-6">برای فروش</span> 
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-23.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-3.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span>
+                                    <span class="featured style fs-12 fw-6">برای فروش</span>
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-8.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-4.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span>
+                                    <span class="featured style fs-12 fw-6">برای فروش</span>
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-21.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-1.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slide-item">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span> 
+                                    <span class="featured style fs-12 fw-6">برای فروش</span> 
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-22.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-2.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span>
+                                    <span class="featured style fs-12 fw-6">برای فروش</span> 
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-23.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-3.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box box-dream hv-one">
+                                <div class="image-group relative">
+                                    <span class="featured fs-12 fw-6">ویژه</span>
+                                    <span class="featured style fs-12 fw-6">برای فروش</span>
+                                    <span class="icon-bookmark"><i class="far fa-bookmark"></i></span> 
+                                    <div class="swiper-container noo carousel-2 img-style">	
+                                        <a href="property-detail-v2.html" class="icon-plus"><i class="fa-thin fa-plus"></i></a>
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-8.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-2.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-3.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-4.jpg' %}" alt="images"></div>
+                                            <div class="swiper-slide"><img src="{% static 'assets/images/house/featured-5.jpg' %}" alt="images"></div>
+                                        </div>
+                                        <div class="pagi2"><div class="swiper-pagination2">  </div> </div>
+                                        <div class="swiper-button-next2"><i class="fal fa-arrow-right"></i></div>
+                                        <div class="swiper-button-prev2"><i class="fal fa-arrow-left"></i> </div>										
+                                    </div>
+                                </div>
+                                <div class="content">
+                                    <h3 class="link-style-1"><a href="property-detail-v2.html">ساختمان آپارتمانی شیک</a> </h3>
+                                    <div class="text-address"><p class="p-12">تهران، جردن، خ‌شیدا، ک‌بهار، پلاک 55</p></div>
+                                    <div class="money fs-18 fw-6 text-color-3"><a href="property-detail-v2.html">750,000 تومان</a></div>  
+                                    <div class="icon-box flex">
+                                        <div class="icons icon-1 flex text-color-4"><span>اتاق: </span><span class="fw-6">4</span></div>
+                                        <div class="icons icon-2 flex"><span>حمام: </span><span class="fw-6">2</span></div>
+                                        <div class="icons icon-3 flex"><span>متراژ: </span><span class="fw-6">1150 متر</span></div>
+                                    </div>   
+                                    <div class="days-box flex justify-space align-center">
+                                        <a class="compare flex align-center fw-6" href="#">مقایسه</a>
+                                        <div class="img-author hv-tool" data-tooltip="علیرضا هاشمی"><img src="{% static 'assets/images/author/author-4.jpg' %}" alt="images"></div>
+                                        <div class="days">3 سال پیش</div>
+                                    </div>										   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
