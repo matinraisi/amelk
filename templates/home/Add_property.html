@@ -1,0 +1,180 @@
+{% extends "parent/base.html" %}
+{% load static %}
+{% block title %}amelk{% endblock title %}
+
+{% comment %} content {% endcomment %}
+{% block content %}
+
+<section class="flat-title">
+    <div class="container">
+        <div class="row">					  
+            <div class="col-lg-12">
+                <div class="title-inner">
+                    <div class="title-group fs-12"><a class="home fw-6 text-color-3" href="index-2.html">خانه</a><span >ثبت درخواست</span></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+
+
+<section class="flat-property-detail">
+    <div class="container">
+        <div class="row">					  
+
+        </div>
+    </div>
+    <div class="container6">
+        <div class="row">					  
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">					  
+            <div class="col-lg-12">
+                <div class="post">
+                    <div class="wrap-text wrap-style">
+                        <h3 class="titles">ثبت درخواست</h3>
+                        <h4>ملک برای اجاره دارم</h4>
+                    </div>
+                    <div class="widget-tour widget-rent">
+                        <div class="flat-tabs style2">
+                            <div class="content-tab">
+                                <div class="content-inner tab-content">
+                                    <div class="comments">
+                                        <div class="comment-form">
+                                            <form method="POST">
+                                                {% csrf_token %}
+                                                <div class="wd-find-select">
+                                                    <fieldset class="wg-box">
+                                                        <label class="fw-6">عنوان اگهی</label>
+                                                        <input type="text" class="my-input2" name="min_rent" required="">
+                                                    </fieldset>
+                                                    <div class="group-select">
+                                                        <h3 class="titles">نوع ملک</h3>
+                                                        <select class="nice-select" name="property_type">
+                                                            <option value="villa">ویلا</option>
+                                                            <option value="apartment">اپارتمان</option>
+                                                            <option value="commercial">تجاری</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="group-select">
+                                                        <h3 class="titles">نوع درخواست</h3>
+                                                        <select class="nice-select" name="property_type">
+                                                            <option value="villa">اجاره</option>
+                                                            <option value="apartment">فروش</option>
+                                                            <option value="commercial">رهن</option>
+                                                        </select>
+                                                    </div>
+                                                </div>  
+                                                    <h3 class="titles">موقعیت مکانی</h3>
+                                                    <fieldset class="message-wrap">
+                                                        <textarea name="location" rows="4" tabindex="4" placeholder="آدرس کامل، شهر یا محله"></textarea>
+                                                    </fieldset> 
+                                                    <h3 class="titles">پول پیش</h3>
+                                                    <div class="inner-1 form-wg flex">
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداکثر </label>
+                                                            <input type="number" class="my-input" name="max_price" required="">
+                                                        </fieldset>
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداقل </label>
+                                                            <input type="number" class="my-input2" name="min_price" required="">
+                                                        </fieldset>
+                                                    </div>
+                                                    <h3 class="titles">مبلغ اجاره</h3>
+                                                    <div class="inner-1 form-wg flex">
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداکثر</label>
+                                                            <input type="number" class="my-input" name="max_rent" required="">
+                                                        </fieldset>
+                                                        <fieldset class="wg-box">
+                                                            <label class="fw-6">حداقل</label>
+                                                            <input type="number" class="my-input2" name="min_rent" required="">
+                                                        </fieldset>
+                                                    </div>
+                                                    <div class="wrap-featured wrap-style tf-amenities">
+                                                        <h3 class="titles">امکانات</h3>
+                                                        <div class="box-featured flex">
+                                                            <div class="inner-1">
+                                                                <div class="subtitle title-1 fw-6">ویژگی های فضای باز</div>
+                                                                <label class="flex">
+                                                                    <input name="pool" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">استخر</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="balcony" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">بالکن</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="closed_parking" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">پرکینگ رو بسته</span> 
+                                                                </label>
+                                                            </div>
+                                                            <div class="inner-2">
+                                                                <label class="flex"><input name="tennis_court" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">زمین تنیس</span>
+                                                                </label>
+                                                                <label class="flex"><input name="parking" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">پارکینگ</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="yard" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">حیاط</span> 
+                                                                </label>
+                                                            </div>
+                                                            <div class="inner-3">
+                                                                <div class="subtitle title-1 fw-6">ویژگی های داخلی</div>
+                                                                <label class="flex"><input name="suite" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">سوئیت</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="library" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">کتابخانه</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="alarm_system" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">سیستم هشدار</span> 
+                                                                </label>
+                                                            </div>
+                                                            <div class="inner-4">
+                                                                <label class="flex"><input name="dishwasher" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">ماشین ظرفشویی</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="parquet" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">پارکت</span> 
+                                                                </label>
+                                                                <label class="flex"><input name="internet" type="checkbox" value="yes" /> 
+                                                                    <span class="btn-checkbox"></span><span class="fs-13">اینترنت</span> 
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            
+                                                    <h3 class="titles mt-4">توضیحات درخواست</h3>
+
+                                                    <fieldset class="message-wrap">
+                                                        <textarea name="description" rows="4" tabindex="4" placeholder=""></textarea>
+                                                    </fieldset> 
+                                                    {% if user.is_authenticated %}
+                                                    <div class="button-box center">
+                                                        <button class="sc-button btn-icon2 one btn-svg center">
+                                                            ثبت درخواست
+                                                        </button>
+                                                        {% else %}
+                                                            <p>برای ثبت درخواست باید وارد سیستم شوید.</p>
+                                                        {% endif %}
+                                                    </div> 
+                                                </div>
+                                            </form>
+                                            
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}

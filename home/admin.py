@@ -12,3 +12,8 @@ class RequestAdmin(admin.ModelAdmin):
 class SellRequestAdmin(admin.ModelAdmin):
     # list_display = ('user',)  # نمایش فیلد کاربر
     search_fields = ('user__phone_number',)  
+@admin.register(RentOutProperty)
+class RentOutProperty(admin.ModelAdmin):
+    list_display = ('id', 'property_type', 'location', 'max_price', 'min_price', 'user__phone_number',)
+    search_fields = ( 'user__phone_number','location', 'property_type')
+    list_filter = ('property_type',)

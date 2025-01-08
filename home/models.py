@@ -29,3 +29,25 @@ class SellRequest(models.Model):
 
     def __str__(self):
         return f"{self.user.phone_number} - درخواست"
+
+
+class RentOutProperty(models.Model):
+    PROPERTY_TYPE_CHOICES = [
+        ('villa', 'ویلا'),
+        ('apartment', 'آپارتمان'),
+        ('commercial', 'تجاری'),
+    
+    ]
+    property_type = models.CharField(max_length=50, choices= PROPERTY_TYPE_CHOICES )
+    location = models.TextField()
+    max_price = models.BigIntegerField()
+    min_price = models.BigIntegerField()
+    max_rent = models.BigIntegerField()
+    min_rent = models.BigIntegerField()
+    amenities = models.JSONField(default=dict)
+    description = models.TextField(blank=True, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='RentOutProperty')
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def __str__(self):
+        return f"{self.property_type} - {self.location}"

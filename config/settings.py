@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-s%1___p&-5h@6$b5332@i#3gdut=uw-_e@q%)%4(7+1k9vh+$h
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -78,15 +78,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'matinra1_amelk', 
+#         'USER': 'matinra1_U_amelk', 
+#         'PASSWORD': '&_?)=!qp_hXQ', 
+#         'HOST': 'localhost',
+#         'PORT': '5432', 
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'amelk',  # نام پایگاه داده
-        'USER': 'postgres',  # نام کاربری PostgreSQL
-        'PASSWORD': '4826',  # رمز عبور
-        'HOST': 'localhost',  # آدرس سرور PostgreSQL (در صورت نصب محلی `localhost`)
-        'PORT': '5432',  # پورت پیش‌فرض PostgreSQL
+        'NAME': 'amelk', 
+        'USER': 'postgres',  
+        'PASSWORD': '4826',  
+        'HOST': 'localhost',  
+        'PORT': '5432',  
     }
 }
 
