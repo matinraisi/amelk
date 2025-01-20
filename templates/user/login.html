@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+ 
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static './assets/css/login_sign.css' %}">
+  <title>فرم ورود</title>
+
+</head>
+<body>
+    <div class="form-container">
+      <h2>فرم ورود</h2>
+      {% if messages %}
+      <div class="messages alert alert-danger">
+          {% for message in messages %}
+          <p class="alert alert-danger" style="color: red;">{{ message }}</p>
+          {% endfor %}
+      </div>
+  {% endif %}
+  
+  <form method="POST" action="{% url 'authentication:login' %}">
+      {% csrf_token %}
+      <label for="mobile">شماره موبایل</label>
+      <input type="text" name="phone_number" id="mobile" placeholder="شماره موبایل" required>
+      
+      <label for="password">رمز عبور</label>
+      <input type="password" name="password" id="password" placeholder="رمز عبور" required>
+      
+      <button type="submit" id="loginBtn">ورود</button>
+      
+      <p class="form-footer">
+          ثبت‌نام نکرده‌اید؟ <a href="{% url 'authentication:register' %}">ثبت‌نام</a>
+      </p>
+  </form>
+  
+      
+      </div>
+      
+
+</body>
+</html>

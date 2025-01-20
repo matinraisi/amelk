@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static './assets/css/login_sign.css' %}">
+  <title>فرم ثبت‌ نام</title>
+
+</head>
+<body>
+
+<div class="form-container">
+  {% if messages %}
+  <div class="messages alert alert-danger">
+      {% for message in messages %}
+          <p class="alert alert-danger" style="color: red;" >{{ message }}</p>
+      {% endfor %}
+  </div>
+{% endif %}
+
+<h2>فرم ثبت‌نام</h2>
+<form method="POST" action="{% url 'authentication:register' %}">
+  {% csrf_token %}
+  <label for="mobile">شماره موبایل</label>
+  <input type="text" name="phone_number" id="mobile" placeholder="شماره موبایل" required>
+  
+  <label for="email">ایمیل</label>
+  <input type="email" name="email" id="email" placeholder="ایمیل" required>
+  
+  <label for="password">رمز عبور</label>
+  <input type="password" name="password1" id="password" placeholder="رمز عبور" required>
+  
+  <label for="confirm-password">تکرار رمز عبور</label>
+  <input type="password" name="password2" id="confirm-password" placeholder="تکرار رمز عبور" required>
+  
+  <button type="submit" class="button">ثبت‌نام</button>
+  
+  <p class="form-footer">
+      قبلاً ثبت‌نام کرده‌اید؟ <a href="{% url 'authentication:login' %}">ورود</a>
+  </p>
+</form>
+
+  
+</div>
+</body>
+</html>

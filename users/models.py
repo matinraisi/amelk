@@ -1,6 +1,6 @@
-# users/models.py
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
+
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, email, password=None, **extra_fields):
@@ -25,12 +25,32 @@ class CustomUserManager(BaseUserManager):
 
         return self.create_user(phone_number, email, password, **extra_fields)
 
-class User(AbstractBaseUser, PermissionsMixin):  # اضافه کردن PermissionsMixin
-    phone_number = models.CharField(max_length=11, unique=True)
-    email = models.EmailField(unique=True)
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)  # اضافه کردن is_superuser
+
+class UserType(models.TextChoices):
+    NORMAL = 'normal', 'کاربر عادی'
+    AGENT = 'agent', 'مشاور املاک'
+    AGENCY = 'agency', 'بنگاه املاک'
+
+
+class User(AbstractBaseUser, PermissionsMixin):
+    phone_number = models.CharField(max_length=11, unique=True, verbose_name="شماره تلفن")
+    email = models.EmailField(unique=True, verbose_name="ایمیل")
+    is_active = models.BooleanField(default=True, verbose_name="فعال")
+    is_staff = models.BooleanField(default=False, verbose_name="کارمند")
+    is_superuser = models.BooleanField(default=False, verbose_name="مدیر")
+    user_type = models.CharField(
+        max_length=10,
+        choices=UserType.choices,
+        default=UserType.NORMAL,
+        verbose_name="نوع حساب"
+    )
+    agency_name = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True,
+        verbose_name="نام بنگاه"
+    )
+    profile_completed = models.BooleanField(default=False, verbose_name="پروفایل تکمیل شده")
 
     objects = CustomUserManager()
 
@@ -38,4 +58,4 @@ class User(AbstractBaseUser, PermissionsMixin):  # اضافه کردن Permissio
     REQUIRED_FIELDS = ['email']
 
     def __str__(self):
-        return self.phone_number
+        return f"{self.phone_number} - {self.get_user_type_display()}"
