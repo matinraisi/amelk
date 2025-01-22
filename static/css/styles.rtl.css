@@ -911,7 +911,8 @@ label {
 .main-header .logo-box .logo img {
   display: inline-block;
   max-width: 100%;
-  
+  width: 44px;
+  height: 48px;
   -webkit-transition: all 0.3s ease;
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -1594,7 +1595,7 @@ label {
 .mobile-button span,
 .mobile-button::after,
 .mobile-button::before {
-  background-color: #1563df;
+  background-color: #ffffff;
   -webkit-transition: all ease 0.3s;
   -moz-transition: all ease 0.3s;
   transition: all ease 0.3s;
