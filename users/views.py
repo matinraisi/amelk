@@ -61,7 +61,7 @@ def logout_view(request):
     messages.info(request, "شما از سیستم خارج شدید.")
     return redirect('HomeApp:home')
 
-@login_required
+@login_required 
 def profile_update_view(request):
     user = request.user
 
@@ -77,3 +77,9 @@ def profile_update_view(request):
         form = ProfileUpdateForm(instance=user)
 
     return render(request, 'user/profile_update.html', {'form': form})
+
+
+
+
+def index_dashboard(request):
+    return render (request, 'user/dashbord/index_dashbord.html')
