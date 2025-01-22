@@ -83,3 +83,19 @@ def profile_update_view(request):
 
 def index_dashboard(request):
     return render (request, 'user/dashbord/index_dashbord.html')
+
+def user_profile(request):
+    return render (request, 'user/dashbord/user_profile.html')
+
+def reviews(request):
+    return render (request, 'user/dashbord/reviews.html')
+
+def myproperty(request):
+    return render (request, 'user/dashbord/my-property.html')
+
+def myfavorites(request):
+    return render (request, 'user/dashbord/my-favorites.html')
+def message(request):
+    return render (request, 'user/dashbord/message.html')
+def addproperty(request):
+    return render (request, 'user/dashbord/add-property.html')
