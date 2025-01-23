@@ -10,5 +10,6 @@ urlpatterns = [
     path('create-sell-request/', views.create_sell_request, name='create_sell_request'),
     path('RentOutProperty/', views.RentOutPropertyView, name='RentOutProperty'),
     path('Add-property/', views.Add_property , name='Addproperty '),#tic
+    path('EstateBuy/', views.EstateBuy , name='buy '),
 
 ]
