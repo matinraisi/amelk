@@ -121,4 +121,5 @@ def RentOutPropertyView(request):
 
         
     return render(request, "home/RentOutPropertyView.html")
-
+def EstateBuy(request):
+    return render(request, "home/EstateBuy.html")
