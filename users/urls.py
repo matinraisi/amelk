@@ -14,10 +14,4 @@ urlpatterns = [
     path('my-favorites/', views.myfavorites, name='myfavorites'),
     path('message/', views.message, name='message'),
     path('addproperty/', views.addproperty, name='addproperty'),
-
-
-
-
-
-
 ]
