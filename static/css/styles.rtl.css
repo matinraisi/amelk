@@ -11130,3 +11130,100 @@ tr {
 }
 
 
+.custom-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  z-index: 1001;
+}
+
+.custom-modal-dialog {
+  padding: 16px;
+  max-width: 500px;
+  margin: auto;
+}
+
+.custom-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+}
+
+.custom-modal-body {
+  padding: 16px 0;
+}
+
+.custom-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  border-top: 1px solid #ddd;
+  padding-top: 8px;
+}
+
+.custom-btn-close {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  color: #333;
+}
+
+.custom-btn-close:hover {
+  color: #000;
+}
+
+.custom-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.custom-tf-btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.custom-tf-btn:hover {
+  background-color: #0056b3;
+}
+
+.custom-btn-line {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+}
+
+.custom-btn-line:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+.advanced-box-btn {
+  margin-top: 20px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+/* Dim background effect */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}

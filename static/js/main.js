@@ -439,3 +439,42 @@
     handleFooter();
   });
 })(jQuery);
+
+function renderModalContent() {
+  const modalBody = document.getElementById('dynamic-modal-content');
+  modalBody.innerHTML = `<p>با ثبت درخواست در این قسمت، آملک نیاز شما را مورد بررسی قرار داده و جزئیات درخواست شما را در اختیار متخصصان مربوطه قرار می‌دهد. تا به سرانجام رسیدن نیاز شما، آملک در کنار شما می‌ماند.</p>`;
+
+  const modal = document.getElementById('modal-content-main');
+  modal.setAttribute('aria-hidden', 'false');
+  modal.style.display = 'block';
+
+  // Add dim background effect
+  const overlay = document.createElement('div');
+  overlay.className = 'modal-overlay';
+  document.body.appendChild(overlay);
+}
+
+document.querySelector('.custom-btn-close').addEventListener('click', function() {
+  const modal = document.getElementById('modal-content-main');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.style.display = 'none';
+
+  // Remove dim background effect
+  const overlay = document.querySelector('.modal-overlay');
+  if (overlay) {
+      overlay.remove();
+  }
+});
+
+function handleConfirm() {
+  alert('درخواست شما تایید شد!');
+  const modal = document.getElementById('modal-content-main');
+  modal.setAttribute('aria-hidden', 'true');
+  modal.style.display = 'none';
+
+  // Remove dim background effect
+  const overlay = document.querySelector('.modal-overlay');
+  if (overlay) {
+      overlay.remove();
+  }
+}
