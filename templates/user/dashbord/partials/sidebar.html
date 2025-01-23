@@ -1,6 +1,6 @@
 {% load static %}
 <div class="sidebar-menu-dashboard">
-  <a class="logo-box" href=""><img alt="" src="{% static 'images/logo/logo-footer@2x.png' %}" /></a>
+  <a class="logo-box" href="{% url 'HomeApp:home' %}"><img alt="" src="{% static 'images/logo/logo-footer@2x.png' %}" /></a>
   <div class="user-box">
     <p class="fw-6">مشخصات</p>
     <div class="user">
@@ -30,8 +30,8 @@
   <div class="menu-box">
     <div class="title fw-6">منو</div>
     <ul class="box-menu-dashboard">
-      <li class="nav-menu-item active">
-        <a class="nav-menu-link" href="dashboard.html">
+      <li class="nav-menu-item {% if request.path == '/users/dashbord/' %}active{% endif %}">
+        <a class="nav-menu-link" href="{% url 'authentication:index_dashboard' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
               <path d="M6.75682 9.35156V15.64" stroke="#F1FAEE" stroke-linecap="round" stroke-linejoin="round"
@@ -49,7 +49,7 @@
         </a>
       </li>
       <li class="nav-menu-item">
-        <a class="nav-menu-link" href="{% url 'authentication:profile' %}">
+        <a class="nav-menu-link {% if request.path == '/users/profile/' %}active{% endif %} " href="{% url 'authentication:profile' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
               <path clip-rule="evenodd"
@@ -65,7 +65,7 @@
         </a>
       </li>
       <li class="nav-menu-item">
-        <a class="nav-menu-link" href="{% url 'authentication:reviews' %}">
+        <a class="nav-menu-link {% if request.path == '/users/reviews/' %} active {% endif %}" href="{% url 'authentication:reviews' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
               <path d="M16.4076 8.11328L12.3346 11.4252C11.5651 12.0357 10.4824 12.0357 9.71285 11.4252L5.60547 8.11328"
@@ -78,7 +78,7 @@
           </svg>بررسی
         </a>
       </li>
-      <li class="nav-menu-item">
+      <li class="nav-menu-item {% if request.path == '/users/my-property/' %} active {% endif %}">
         <a class="nav-menu-link" href="{% url 'authentication:myproperty' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
@@ -96,7 +96,7 @@
         </a>
       </li>
       <li class="nav-menu-item">
-        <a class="nav-menu-link" href="{% url 'authentication:myfavorites' %}">
+        <a class="nav-menu-link {% if request.path == '/users/my-favorites/' %}active{% endif %}" href="{% url 'authentication:myfavorites' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
               <path clip-rule="evenodd"
@@ -110,7 +110,7 @@
         </a>
       </li>
       <li class="nav-menu-item">
-        <a class="nav-menu-link" href="{% url 'authentication:message' %}">
+        <a class="nav-menu-link {% if request.path == '/users/message/' %}active{% endif %}" href="{% url 'authentication:message' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
               <path clip-rule="evenodd"
@@ -128,7 +128,7 @@
         </a>
       </li>
       <li class="nav-menu-item">
-        <a class="nav-menu-link" href="{% url 'authentication:addproperty' %}">
+        <a class="nav-menu-link {% if request.path == '/users/addproperty/' %}active{% endif %}" href="{% url 'authentication:addproperty' %}">
           <svg fill="none" height="22" viewbox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
               <path
