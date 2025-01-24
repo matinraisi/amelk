@@ -767,7 +767,7 @@ label {
   width: 100%;
   height: 78px;
   position: relative;
-  background-color: #2455A9!important;
+  background-color: #2455A9;
   padding-right: 15px;
   padding-left: 15px;
   box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.0784313725);
@@ -1024,7 +1024,7 @@ label {
   font-weight: 600;
   padding: 27px 0;
   letter-spacing: 0;
-  color: #161e2d;
+  color: white!important;
   font-size: 16px;
   line-height: 21.86px;
   text-transform: capitalize;
@@ -4016,6 +4016,7 @@ label {
   transition: all 0.3s ease;
   cursor: pointer;
 }
+
 .box-icon .icon {
   font-size: 18px;
 }
@@ -6809,15 +6810,21 @@ label {
 .single-property-overview .info-box {
   display: flex;
   flex-wrap: wrap;
-  column-gap: 40px;
+  
   row-gap: 30px;
 }
 .single-property-overview .info-box .item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  min-width: 140px;
+  gap: 20px;
+  text-align: center;
+  min-width: 80px;
+ 
 }
+.single-property-overview .info-box .box-icon:hover{
+  color: white;
+}
+
 .single-property-overview .info-box .item span {
   font-weight: 600;
 }
@@ -8251,10 +8258,11 @@ label {
   padding: 30px;
   border-radius: 16px;
   background-color: #fff;
-  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.0392156863);
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
 }
 .widget-box-2 .title {
   margin-bottom: 20px;
+  color: #274A90;
 }
 .layout-wrap .main-content {
   padding-right: 280px;
@@ -8353,7 +8361,7 @@ label {
   flex-shrink: 0;
   width: 80px;
   height: 80px;
-  border: 1px solid #e4e4e4;
+  border: 1px solid #e4e4e4 !important;
   border-radius: 50%;
 }
 .layout-wrap .flat-counter-v2 .counter-box .box-icon .icon {
@@ -8730,6 +8738,9 @@ tr {
 }
 .box-fieldset label {
   margin-bottom: 8px;
+}
+.box-fieldset label > span{
+  color: red;
 }
 .box-fieldset .nice-select {
   padding: 15px 18px;
@@ -9318,7 +9329,7 @@ tr {
     padding-left: 30px;
   }
   .main-header .inner-header-left {
-    gap: 50px;
+    gap: 270px!important;
   }
   .container-full {
     padding-right: 30px;
@@ -10274,7 +10285,7 @@ tr {
   }
   .flat-account .form-account .box-fieldset label {
     margin-bottom: 8px;
-  }
+  } 
   .flat-account .form-account .box-fieldset .text-forgot {
     margin-top: 10px;
   }
@@ -10899,7 +10910,10 @@ tr {
   right: 30px;
 }
 
-
+.instalaciones{
+  display: flex;
+  justify-content: space-around;
+}
 
 /* mobile navbar */
 
@@ -10978,6 +10992,9 @@ tr {
 
 .options_img_dot {
   width: 51px;
+}
+.single-property-overview{
+  display: block;
 }
 }
 /* end mobile navbar */
@@ -11195,7 +11212,7 @@ tr {
 }
 
 .custom-tf-btn:hover {
-  background-color: #0056b3;
+  background-color: #2455A9;
 }
 
 .custom-btn-line {
@@ -11205,7 +11222,7 @@ tr {
 }
 
 .custom-btn-line:hover {
-  background-color: #007bff;
+  background-color: #2455A9;
   color: white;
 }
 
