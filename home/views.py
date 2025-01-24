@@ -123,3 +123,14 @@ def RentOutPropertyView(request):
     return render(request, "home/RentOutPropertyView.html")
 def EstateBuy(request):
     return render(request, "home/EstateBuy.html")
+def About(request):
+    return render(request, "home/About.html")
+
+def Contact(request):
+    return render(request, "home/Contact.html")
+
+def EstateAlquilar(request):
+    return render(request, "home/EstateAlquilar.html")
+
+def EstateSell(request):
+    return render(request, "home/EstateSell.html")

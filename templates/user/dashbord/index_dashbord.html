@@ -56,13 +56,24 @@
       </div>
       
       <div class="widget-box-2 ">
-      <div class="box">
-        <h5 class="title">تنظیمات حساب</h5><div class="box-agent-account">
-          <h6>حساب مشاوراملاک</h6>
-          <p class="note">نوع حساب فعلی شما روی مشاور املاک تنظیم شده است، اگر می خواهید حساب مشاور املاک خود را حذف کنید و به حساب عادی بازگردید، باید روی دکمه زیر کلیک کنید.</p>
-          <a class="tf-btn primary" href="#">حذف اکانت مشاور املاک</a>
+        <div class="box">
+          <h5 class="title">تنظیمات حساب</h5>
+          <div class="box-agent-account">
+            <h6>حساب مشاور املاک</h6>
+            <p class="note">
+              نوع حساب فعلی شما روی مشاور املاک تنظیم شده است، اگر می‌خواهید حساب خود را به عنوان مشاور املاک ارتقا دهید، روی دکمه زیر کلیک کنید.
+            </p>
+            <a class="tf-btn primary" href="#">ارتقا به حساب مشاور املاک</a>
+        
+            <!-- چک‌باکس برای عدم نمایش دوباره -->
+            <div class="no-show">
+              <label>
+                <input type="checkbox" id="no-show-again"> دیگر این پیام را نمایش نده
+              </label>
+            </div>
+          </div>
         </div>
-      </div>
+
       </div>
       <div class="wrapper-content row mt-12">
         <div class="col-xl-12">
@@ -367,4 +378,27 @@
       <p>حق چاپ © 1403 توسط فرهام اقدسی</p>
     </div>
   </div>
+
+
+
+
+  <!-- <script>
+    // بررسی چک‌باکس و ذخیره تنظیمات
+    document.getElementById('no-show-again').addEventListener('change', function() {
+      if (this.checked) {
+        // ذخیره تنظیمات در سشن یا در محلی مانند کوکی
+        localStorage.setItem('hideAgentAccountMessage', 'true');
+      } else {
+        localStorage.removeItem('hideAgentAccountMessage');
+      }
+    });
+  
+    // بررسی تنظیمات برای عدم نمایش پیام
+    window.onload = function() {
+      if (localStorage.getItem('hideAgentAccountMessage') === 'true') {
+        // مخفی کردن بخش پیام
+        document.querySelector('.box-agent-account').style.display = 'none';
+      }
+    };
+  </script> -->
   {% endblock %}

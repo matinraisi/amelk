@@ -11,5 +11,10 @@ urlpatterns = [
     path('RentOutProperty/', views.RentOutPropertyView, name='RentOutProperty'),
     path('Add-property/', views.Add_property , name='Addproperty '),#tic
     path('EstateBuy/', views.EstateBuy , name='buy '),
+    path('About/', views.About , name='About '),
+    path('Contact/', views.Contact , name='Contact '),
+    path('EstateAlquilar/', views.EstateAlquilar , name='EstateAlquilar '),
+    path('EstateSell/', views.EstateSell , name='EstateSell '),
+
 
 ]
