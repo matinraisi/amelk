@@ -55,26 +55,21 @@
         </div>
       </div>
       
+      {% if user_type != 'agent' %}
       <div class="widget-box-2 ">
         <div class="box">
           <h5 class="title">تنظیمات حساب</h5>
           <div class="box-agent-account">
             <h6>حساب مشاور املاک</h6>
             <p class="note">
-              نوع حساب فعلی شما روی مشاور املاک تنظیم شده است، اگر می‌خواهید حساب خود را به عنوان مشاور املاک ارتقا دهید، روی دکمه زیر کلیک کنید.
+              نوع حساب فعلی شما حساب عادی تنظیم شده است، اگر می‌خواهید حساب خود را به عنوان مشاور املاک ارتقا دهید، روی دکمه زیر کلیک کنید.  
             </p>
-            <a class="tf-btn primary" href="#">ارتقا به حساب مشاور املاک</a>
-        
-            <!-- چک‌باکس برای عدم نمایش دوباره -->
-            <div class="no-show">
-              <label>
-                <input type="checkbox" id="no-show-again"> دیگر این پیام را نمایش نده
-              </label>
-            </div>
+            <a class="tf-btn primary" href="{% url 'authentication:profile_upgrade' %}">ارتقا به حساب مشاور املاک</a>
           </div>
         </div>
-
       </div>
+      {% endif %}
+      
       <div class="wrapper-content row mt-12">
         <div class="col-xl-12">
           <div class="widget-box-2 wd-listing">

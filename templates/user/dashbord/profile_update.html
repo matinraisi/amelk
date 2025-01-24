@@ -1,0 +1,70 @@
+{% extends "user/dashbord/parent/base.html" %}
+{% load static %}
+{% block title %}ارتقا حساب کاربری{% endblock title %}
+
+{% block content %}
+<div class="main-content">
+    <div class="main-content-inner wrap-dashboard-content-2">
+        <div class="widget-box-2">
+            <div class="box">
+                <h5 class="title">ارتقا حساب کاربری به مشاور املاک</h5>
+
+                <form method="POST"  action="{% url 'authentication:profile_upgrade' %}">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    
+                    <div class="form-group">
+                        {{ form.user_type.label_tag }}
+                        {{ form.user_type }}
+                        {{ form.user_type.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.full_name.label_tag }}
+                        {{ form.full_name }}
+                        {{ form.full_name.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.agency_name.label_tag }}
+                        {{ form.agency_name }}
+                        {{ form.agency_name.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.whatsapp_number.label_tag }}
+                        {{ form.whatsapp_number }}
+                        {{ form.whatsapp_number.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.specialization.label_tag }}
+                        {{ form.specialization }}
+                        {{ form.specialization.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.activity_areas.label_tag }}
+                        {{ form.activity_areas }}
+                        {{ form.activity_areas.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.address.label_tag }}
+                        {{ form.address }}
+                        {{ form.address.errors }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ form.description.label_tag }}
+                        {{ form.description }}
+                        {{ form.description.errors }}
+                    </div>
+
+                    <button type="submit" class="tf-btn primary mt-3">ذخیره و به روز رسانی</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

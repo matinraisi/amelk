@@ -3,8 +3,8 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.auth import login, logout, authenticate
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import User
-from .forms import RegistrationForm, ProfileUpdateForm
+from .models import User , UserType , AdProperty
+from .forms import RegistrationForm, ProfileUpdateForm , PropertyForm
 
 def register_view(request):
     if request.method == 'POST':
@@ -64,39 +64,71 @@ def logout_view(request):
 @login_required
 def profile_update_view(request):
     user = request.user
-
+    if user.user_type == UserType.AGENT:
+        return redirect('authentication:profile')  
     if request.method == 'POST':
-        form = ProfileUpdateForm(request.POST, instance=user)
+        form = ProfileUpdateForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             user = form.save(commit=False)
-            user.profile_completed = True
+            # بررسی نوع حساب کاربری
+            if user.user_type == UserType.AGENCY and not user.profile_completed:
+                user.profile_completed = True 
+            elif user.user_type == UserType.AGENT and not user.profile_completed:
+                user.profile_completed = True 
             user.save()
             messages.success(request, "پروفایل با موفقیت به‌روزرسانی شد.")
-            return redirect('HomeApp:home')
+            return redirect('authentication:profile')
+        
     else:
         form = ProfileUpdateForm(instance=user)
-
-    return render(request, 'user/profile_update.html', {'form': form})
-
-
-
-
+    return render(request, 'user/dashbord/profile_update.html', {'form': form})
+@login_required
 def index_dashboard(request):
-    return render (request, 'user/dashbord/index_dashbord.html')
-
+    user = request.user
+    print(user.user_type)
+    return render (request, 'user/dashbord/index_dashbord.html',{'user_type': user.user_type})
+@login_required    
 def user_profile(request):
-    return render (request, 'user/dashbord/user_profile.html')
-
+    user_profile = request.user
+    # print(user_profile)
+    return render(request, 'user/dashbord/user_profile.html', {
+        'user_profile': user_profile
+    })
+        
+@login_required
 def reviews(request):
     return render (request, 'user/dashbord/reviews.html')
 
+    
+    
+    
+@login_required
 def myproperty(request):
     return render (request, 'user/dashbord/my-property.html')
 
+
+
+@login_required
 def myfavorites(request):
     return render (request, 'user/dashbord/my-favorites.html')
+
+
+
+@login_required   
 def message(request):
     return render (request, 'user/dashbord/message.html')
+
+
+
 @login_required
 def Add_property(request):
-    return render (request, 'user/dashbord/add-property.html')
+    if request.method == 'POST':
+        form = PropertyForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form)
+            form.save()
+            return redirect('property_list')  # به لیست آگهی‌ها هدایت شود
+    else:
+        form = PropertyForm()
+
+    return render(request, 'user/dashbord/add-property.html', {'form': form})

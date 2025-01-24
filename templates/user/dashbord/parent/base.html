@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/persian-datepicker/dist/css/persian-datepicker.min.css" />
     <link href="{% static 'images/logo/favicon.png' %}" rel="shortcut icon" />
     <link href="{% static 'images/logo/favicon.png' %}" rel="apple-touch-icon-precomposed" />
+
+
+    <!-- map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   </head>
   <body class="body bg-surface counter-scroll">
     <div class="preload preload-container">
@@ -24,7 +29,6 @@
     <div id="wrapper">
       <div class="clearfix" id="page">
         <div class="layout-wrap">
-
             <!-- header dashbord -->
             {% include "user/dashbord/partials/header.html" %}
             <!-- header dashbord -->
