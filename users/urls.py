@@ -13,5 +13,5 @@ urlpatterns = [
     path('my-property/', views.myproperty, name='myproperty'),
     path('my-favorites/', views.myfavorites, name='myfavorites'),
     path('message/', views.message, name='message'),
-    path('addproperty/', views.addproperty, name='addproperty'),
+    path('addproperty/', views.Add_property, name='addproperty'),
 ]

@@ -97,5 +97,5 @@ def myfavorites(request):
     return render (request, 'user/dashbord/my-favorites.html')
 def message(request):
     return render (request, 'user/dashbord/message.html')
-def addproperty(request):
+def Add_property(request):
     return render (request, 'user/dashbord/add-property.html')
