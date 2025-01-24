@@ -57,5 +57,22 @@
     <script src="{% static 'js/shortcodes.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/jqueryui.min.js' %}" type="text/javascript"></script>
     <script src="{% static 'js/main.js' %}" type="text/javascript"></script>
+      <!-- login time -->
+  <script>
+    let idleTime = 0;
+
+    // هر 1 دقیقه بررسی می‌کند
+    setInterval(() => {
+        idleTime++;
+        if (idleTime >= 30) { // اگر 30 دقیقه بی‌حرکتی باشد
+            window.location.href = "{% url 'authentication:login' %}"; // انتقال به صفحه لاگین
+        }
+    }, 60000); // 60000 میلی‌ثانیه = 1 دقیقه
+
+    // وقتی کاربر حرکتی انجام می‌دهد، تایمر را ریست می‌کنیم
+    document.addEventListener("mousemove", () => idleTime = 0);
+    document.addEventListener("keypress", () => idleTime = 0);
+</script>
+
   </body>
 </html>
