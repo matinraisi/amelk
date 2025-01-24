@@ -61,7 +61,7 @@ def logout_view(request):
     messages.info(request, "شما از سیستم خارج شدید.")
     return redirect('HomeApp:home')
 
-@login_required 
+@login_required
 def profile_update_view(request):
     user = request.user
 
@@ -97,5 +97,6 @@ def myfavorites(request):
     return render (request, 'user/dashbord/my-favorites.html')
 def message(request):
     return render (request, 'user/dashbord/message.html')
+@login_required
 def Add_property(request):
     return render (request, 'user/dashbord/add-property.html')

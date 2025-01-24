@@ -154,3 +154,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.User'
 
 
+# login
+# # مدت زمان سشن به ثانیه (30 دقیقه)
+SESSION_COOKIE_AGE = 1800  
+# تمدید زمان انقضای سشن در هر درخواست
+SESSION_SAVE_EVERY_REQUEST = True
+# login address
+LOGIN_URL = '/users/login/'
