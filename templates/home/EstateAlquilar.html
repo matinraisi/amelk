@@ -1,0 +1,173 @@
+{% extends "parent/base.html" %}
+{% load static %}
+{% block title %}amelk{% endblock title %}
+
+{% comment %} content {% endcomment %}
+{% block content %}
+<div class="layout-wrap ">
+  <div class="widget-box-2 ">
+    <div class="box">
+      <div class="box-title-listing">
+        <div class="box-left">
+          <a href="home.html"> <i class="icon icon-arr-r"></i></a><h3 class="fw-8">اجاره ملک</h3>
+        </div>
+        </div>
+      <div class="box-agent-account">
+        <h6>خانه خود را با اطمینان اجاره دهید</h6><p class="note"> آملک ، اجاره خانه شما و حرکت رو به جلو  را ساده تر میکند زمانی که شما درخواست ملک خود را  در آملک ثبت کنید، آملک 
+          درخواست شما را مورد بررسی قرار داده و در اختیار یکی از بهترین
+          مشاورین املاک منطقه قرار میدهد  </p>
+          <div class="flat-tab flat-tab-form" >
+            <ul class="nav-tab-form style-1 justify-content-center" role="tablist">
+              <li class="nav-tab-item" role="presentation" >
+                <a class="tf-btn primary" data-bs-toggle="tab" href="#forRent" >میخام ملک اجاره کنم </a>
+              </li>
+              <li class="nav-tab-item" role="presentation">
+                <a class="tf-btn primary" data-bs-toggle="modal" href="#modalLogin">ملک برای  اجاره دارم </a>
+              </li>
+            </ul>
+            </div>
+      
+        </div>
+      
+    </div>
+    </div>
+</div>
+
+<div class="modal modal-account fade" id="modalLogin">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+       
+        <div class="flat-account">
+            
+          <form class="form-account">
+            <div class="title-box">
+                <h4>رهن و اجاره</h4><span class="close-modal icon-close2" data-bs-dismiss="modal"></span>
+              </div>
+            <div class="box grid-2 gap-30">
+                <fieldset class="box box-fieldset">
+                    <label>عنوان:<span>*</span></label>
+                    <input
+                      class="form-control"
+                      placeholder="انتخاب کردن"
+                      type="text"
+                    />
+                  </fieldset>
+                  <fieldset class="box box-fieldset">
+                    <label>کد آگهی:<span>*</span></label>
+                    <input
+                      class="form-control"
+                      placeholder="انتخاب کردن"
+                      type="text"
+                    />
+                  </fieldset>
+                <fieldset class="box-fieldset">
+                  <label>استان/ایالت:<span>*</span></label>
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">هیچ کدام</span>
+                    <ul class="list">
+                      <li class="option selected" data-value="1">
+                        هیچ کدام
+                      </li>
+                      <li class="option" data-value="2">تگزاس</li>
+                      <li class="option" data-value="3">نیویورک</li>
+                    </ul>
+                  </div>
+                </fieldset>
+                <fieldset class="box-fieldset">
+                  <label>شهر:<span>*</span></label>
+                  <div class="nice-select" tabindex="0">
+                    <span class="current">هیچ کدام</span>
+                    <ul class="list">
+                      <li class="option selected" data-value="1">
+                        هیچ کدام
+                      </li>
+                      <li class="option" data-value="2">زاهدان </li>
+                      <li class="option" data-value="3">تهران</li>
+                    </ul>
+                  </div>
+                </fieldset>
+              </div>
+                <div class="box-price-property">
+                  <div class="box grid-2 gap-30">
+                    <fieldset class="box-fieldset">
+                      <label>قیمت اجاره:<span>*</span></label>
+                      <input
+                        class="form-control"
+                        placeholder="مقدار مثال: 12345.67"
+                        type="text"
+                      />
+                    </fieldset>
+                    <fieldset class="box-fieldset">
+                      <label>قیمت رهن:<span>*</span></label>
+                      <div class="nice-select" tabindex="0">
+                        <span class="current">هیچ کدام</span>
+                        <ul class="list">
+                          <li class="option selected" data-value="1">
+                            هیچ کدام
+                          </li>
+                          <li class="option" data-value="2">1000</li>
+                          <li class="option" data-value="3">2000</li>
+                        </ul>
+                      </div>
+                    </fieldset>
+
+                    <fieldset class="box-fieldset">
+                        <label> تعدا اتاق خواب:<span>*</span></label>
+                        <div class="nice-select" tabindex="0">
+                          <span class="current">هیچ کدام</span>
+                          <ul class="list">
+                            <li class="option selected" data-value="1">
+                              1
+                            </li>
+                            <li class="option" data-value="2">2</li>
+                            <li class="option" data-value="3">3</li>
+                          </ul>
+                        </div>
+                      </fieldset>
+                      <fieldset class="box-fieldset">
+                        <label> تعدا پارکینگ:<span>*</span></label>
+                        <div class="nice-select" tabindex="0">
+                          <span class="current">هیچ کدام</span>
+                          <ul class="list">
+                            <li class="option selected" data-value="1">
+                            1
+                            </li>
+                            <li class="option" data-value="2">2</li>
+                            <li class="option" data-value="3">3</li>
+                          </ul>
+                        </div>
+                      </fieldset>
+                    <fieldset class="box-fieldset"><label> سال ساخت:<span>*</span></label> <input
+                        class="form-control" type="text"></fieldset>
+                    <fieldset class="box-fieldset"><label>  طبقه:<span>*</span></label> <input
+                        class="form-control" type="text"></fieldset>
+                
+                  
+                 
+                    <fieldset class="box-fieldset">
+                      <label>قبل از برچسب قیمت:<span>*</span></label>
+                      <input class="form-control" type="text" />
+                    </fieldset>
+                    <fieldset class="box-fieldset">
+                      <label>برچسب After Price:<span>*</span></label>
+                      <input class="form-control" type="text" />
+                    </fieldset>
+                </div>
+            
+                <fieldset class="box box-fieldset">
+                    <label>توضیحات:</label>
+                    <textarea
+                      class="textarea"
+                      placeholder="توضیحات شما"
+                    ></textarea>
+                  </fieldset>
+            <div class="box box-btn mt-20">
+              <a class="tf-btn primary w-100" href="#">ثبت</a>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    {% endblock content %}
