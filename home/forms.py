@@ -1,13 +1,26 @@
 from django import forms
-from .models import PropertyRequest , RentOutPropertyView
+from .models import ConsultationRequest , SellRequest
 
-class PropertyRequestForm(forms.ModelForm):
+class ConsultationRequestForm(forms.ModelForm):
     class Meta:
-        model = PropertyRequest
-        fields = ['name', 'request_type', 'location', 'min_price', 'max_price', 'min_area', 'max_area', 'features', 'bedrooms', 'description']
-
-
-class RentOutPropertyForm(forms.ModelForm):
+        model = ConsultationRequest
+        fields = ['ad_type', 'location', 'area', 'price', 'bedrooms', 'facilities', 'message']
+        widgets = {
+            'ad_type': forms.Select(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'area': forms.NumberInput(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control'}),
+            'bedrooms': forms.Select(choices=[
+                ('1', '1'),
+                ('2', '2'),
+                ('3', '3'),
+                ('+3', '+3')
+            ], attrs={'class': 'form-control'}),
+            'facilities': forms.TextInput(attrs={'class': 'form-control'}),
+            'message': forms.Textarea(attrs={'class': 'form-control', 'rows': 5}),
+        }
+        
+class SellRequestForm(forms.ModelForm):
     class Meta:
-        model = RentOutPropertyView
-        fields = ['property_type', 'location', 'max_price', 'min_price', 'max_rent', 'min_rent', 'features', 'description',]
+        model = SellRequest
+        fields = [] 

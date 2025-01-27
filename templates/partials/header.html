@@ -7,7 +7,7 @@
           <div class="inner-header-left">
             <div class="logo-box flex">
               <div class="logo">
-                <a href="index.html"><img alt="logo" height="25" src="{% static 'images/logo/logo@2x.png' %}" width="40" /></a>
+                <a href="/"><img alt="logo" height="25" src="{% static 'images/logo/logo@2x.png' %}" width="40" /></a>
               </div>
             </div>
             <div class="nav-outer flex align-center">
@@ -15,26 +15,26 @@
                 <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
                   <ul class="navigation clearfix">
                     <li class=" home current">
-                      <a href="#">خانه</a>
+                      <a href="/">خانه</a>
                     </li>
                     <li class="dropdown2">
                       <a href="#">خدمات</a><ul>
                         <li>
-                          <a href="property-halfmap-grid.html">خرید</a>
+                          <a href="{% url 'HomeApp:EstateSell' %}">خرید</a>
                         </li>
                         <li>
-                          <a href="property-halfmap-list.html"> فروش</a>
+                          <a href="{% url 'HomeApp:buy' %}"> فروش</a>
                         </li>
                         <li>
-                          <a href="topmap-grid.html">اجاره</a>
+                          <a href="{% url 'HomeApp:EstateAlquilar' %}">اجاره</a>
                         </li>
                       </ul>
                     </li>
                     <li class="">
-                      <a href="#"> درباره ما</a>
+                      <a href="{% url 'HomeApp:About' %}"> درباره ما</a>
                     </li>
                     <li class="">
-                      <a href="#">تماس با ما</a>
+                      <a href="{% url 'HomeApp:Contact' %}">تماس با ما</a>
                     </li>
                   </ul>
                 </div>

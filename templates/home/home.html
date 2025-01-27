@@ -360,7 +360,7 @@
                     <p class="description">با راهنمایی های متخصص و استراتژی های موثر، با اطمینان کامل بفروشید، بهترین
                         ویژگی
                         های ملک خود را برای فروش موفق به نمایش بگذارید.</p><a class="tf-btn btn-line"
-                        href="sidebar-grid.html">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+                        href="{% url 'HomeApp:EstateSell' %}">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
                 </div>
             </div>
             <div class="box-service">
@@ -372,7 +372,7 @@
                     <h5 class="title">اجاره خانه</h5>
                     <p class="description">اجاره کامل خود را بدون زحمت کشف کنید. فهرست های متنوعی را که دقیقاً مطابق با
                         نیازهای سبک زندگی منحصر به فرد شما طراحی شده اند، کاوش کنید.</p><a class="tf-btn btn-line"
-                        href="sidebar-grid.html">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
+                        href="{% url 'HomeApp:EstateAlquilar' %}">بیشتر بدانید<span class="icon icon-arrow-left2"></span></a>
                 </div>
             </div>
         </div>
@@ -2633,97 +2633,36 @@
             data-pagination-md="3" data-pagination-sm="2" data-preview="6" data-space="8" data-space-lg="8"
             data-space-md="8" data-tablet="3">
             <div class="swiper-wrapper">
+                {% for PR in properties %}
                 <div class="swiper-slide">
                     <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-1.jpg" src="images/location/location-1.jpg" /></a>
+                        <a class="image img-style" href="{% url 'HomeApp:HouseDetails' PR.id %}">
+                            {% if PR.images.exists %}
+                            <img alt="image-location" class="lazyload"  src="{{ PR.images.first.image.url }}" /></a>
+                            {% else %}
+                            <img alt="image-location" class="lazyload" src="" alt="عکسی وجود ندارد" /></a>
+                            {% endif %}
+
                         <div class="content">
                             <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">ناپرویل</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
+                                <span class="sub-title fw-6">                                  {% if PR.ad_type == "PURCHASE" %}
+                                    خرید
+                                    {% elif PR.ad_type == "SALE" %}
+                                    فروش
+                                  {% elif PR.ad_type == "LEASE" %}
+                                    رهن
+                                {% elif PR.ad_type == "RENT" %}
+                                    اجاره
+                                {% else %}
+                                    نامشخص
+                                {% endif %}</span>
+                                <h6 class="title text-line-clamp-1 link">{{PR.title}}</h6>
+                            </div><a class="box-icon line w-44 round" href="{% url 'HomeApp:HouseDetails' PR.id %}"><i
                                     class="icon icon-arrow-left2"></i></a>
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-2.jpg" src="images/location/location-2.jpg" /></a>
-                        <div class="content">
-                            <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">کاج پمبروک</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
-                                    class="icon icon-arrow-left2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-3.jpg" src="images/location/location-3.jpg" /></a>
-                        <div class="content">
-                            <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">تولدو</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
-                                    class="icon icon-arrow-left2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-4.jpg" src="images/location/location-4.jpg" /></a>
-                        <div class="content">
-                            <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">نارنجی</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
-                                    class="icon icon-arrow-left2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-5.jpg" src="images/location/location-5.jpg" /></a>
-                        <div class="content">
-                            <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">فرفیلد</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
-                                    class="icon icon-arrow-left2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-6.jpg" src="images/location/location-6.jpg" /></a>
-                        <div class="content">
-                            <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">ناپرویل</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
-                                    class="icon icon-arrow-left2"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="box-location">
-                        <a class="image img-style" href="topmap-grid.html"><img alt="image-location" class="lazyload"
-                                data-src="images/location/location-1.jpg" src="images/location/location-1.jpg" /></a>
-                        <div class="content">
-                            <div class="inner-left">
-                                <span class="sub-title fw-6">321 اموال</span>
-                                <h6 class="title text-line-clamp-1 link">آستین</h6>
-                            </div><a class="box-icon line w-44 round" href="topmap-grid.html"><i
-                                    class="icon icon-arrow-left2"></i></a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <div class="sw-pagination sw-pagination-location text-center"></div>
         </div>

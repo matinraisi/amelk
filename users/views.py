@@ -84,12 +84,13 @@ def profile_update_view(request):
     return render(request, 'user/dashbord/profile_update.html', {'form': form})
 @login_required
 def index_dashboard(request):
-    user = request.user  # کاربر جاری
-    adsProperty = Property.objects.filter(user=user)  # فیلتر کردن آگهی‌ها بر اساس کاربر
-    print(adsProperty)
+    user = request.user  
+    adsProperty = Property.objects.filter(user=user)  
+    ads_count = adsProperty.count()
     return render(request, 'user/dashbord/index_dashbord.html', {
-        'user_type': user.user_type,  # نوع کاربر
-        'adsProperty': adsProperty  # ارسال آگهی‌ها به قالب
+        'user_type': user.user_type, 
+        'adsProperty': adsProperty,
+        'ads_count': ads_count    
     })
 @login_required    
 def user_profile(request):
