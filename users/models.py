@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth import get_user_model
+from django.utils import timezone
+
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, email, password=None, **extra_fields):
         if not phone_number:
@@ -67,43 +69,62 @@ class User(AbstractBaseUser, PermissionsMixin):
         return f"{self.phone_number} - {self.get_user_type_display()}"
 
 
+class Property(models.Model):
+    PROPERTY_TYPES = [
+        ('apartment', 'آپارتمان'),
+        ('villa', 'ویلا'),
+        ('land', 'زمین'),
+        ('house', 'خانه'),
+    ]
+    
+    USE_PROPERTY = [
+        ('administrative', 'اداری'),
+        ('commercial', 'تجاری'),
+        ('residential', 'مسکونی'),
+    ]
+    
+    AD_TYPES = [
+        ('purchase', 'خرید'),
+        ('sale', 'فروش'),
+        ('lease', 'رهن'),
+        ('rent', 'اجاره'),
+    ]
 
-class PropertyType(models.TextChoices):
-    APARTMENT = 'apartment', 'آپارتمان'
-    VILLA = 'villa', 'ویلا'
-    LAND = 'land', 'زمین'
-    HOUSE = 'house', 'خانه'
+    STATUS_CHOICES = [
+        ('draft', 'پیش نویس'),
+        ('published', 'منتشر شده'),
+        ('expired', 'منقضی شده'),
+    ]
 
-# نوع آگهی
-class AdType(models.TextChoices):
-    SALE = 'sale', 'فروش'
-    RENT = 'rent', 'رهن و اجاره'
-    PURCHASE = 'purchase', 'خرید'
-    LEASE = 'lease', 'اجاره'
-
-# مدل آگهی
-class AdProperty(models.Model):
-    title = models.CharField(max_length=255, verbose_name="عنوان آگهی")
-    property_type = models.CharField(max_length=20, choices=PropertyType.choices, verbose_name="نوع ملک")
-    ad_type = models.CharField(max_length=20, choices=AdType.choices, verbose_name="نوع آگهی")
+    title = models.CharField(max_length=200, verbose_name="عنوان آگهی")
+    property_type = models.CharField(choices=PROPERTY_TYPES, max_length=50, verbose_name="نوع ملک")
+    use_property = models.CharField(choices=USE_PROPERTY, max_length=50, verbose_name="کاربری ملک")
+    ad_type = models.CharField(choices=AD_TYPES, max_length=50, verbose_name="نوع آگهی")
     price_min = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, verbose_name="قیمت حداقل")
     price_max = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, verbose_name="قیمت حداکثر")
     deposit = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, verbose_name="پول پیش")
     rent = models.DecimalField(max_digits=12, decimal_places=2, null=True, blank=True, verbose_name="اجاره ماهیانه")
-    city = models.CharField(max_length=50, verbose_name="شهر")  # تغییر نام از 'citys' به 'city'
-    postalcode = models.CharField(max_length=10, verbose_name="کد پستی")  # تغییر به CharField
-    location = models.CharField(max_length=255, verbose_name="آدرس کامل")  # اصلاح املای "ادرس"
-    images = models.ImageField(upload_to='ads/', null=True, blank=True, verbose_name="تصاویر آگهی")
+    city = models.CharField(max_length=50, verbose_name="شهر")
+    postalcode = models.CharField(max_length=10, verbose_name="کد پستی")
+    location = models.CharField(max_length=255, verbose_name="آدرس کامل")
     area = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="متراژ")
     num_bedrooms = models.IntegerField(verbose_name="تعداد خواب")
-    construction_year = models.CharField(max_length=4, verbose_name="تاریخ ساخت")  # اصلاح نام فیلد
+    construction_year = models.CharField(max_length=10, verbose_name="تاریخ ساخت")
     description = models.TextField(verbose_name="توضیحات")
+    images = models.ManyToManyField('Image', related_name='properties', blank=True, verbose_name="تصاویر")
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, verbose_name="کاربر")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+    status = models.CharField(choices=STATUS_CHOICES, max_length=20, default='published', verbose_name="وضعیت آگهی")
 
     def __str__(self):
         return f"{self.title} - {self.property_type} - {self.ad_type}"
 
     class Meta:
-        verbose_name = "آگهی"
-        verbose_name_plural = "آگهی‌ها"
+        verbose_name = "آگهی ملک"
+        verbose_name_plural = "آگهی‌های ملک"
+
+class Image(models.Model):
+    image = models.ImageField(upload_to='property_images/', verbose_name="تصویر")
+
+    def __str__(self):
+        return str(self.image)

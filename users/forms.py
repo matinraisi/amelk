@@ -1,5 +1,5 @@
 from django import forms
-from .models import User, UserType , AdProperty
+from .models import User, UserType , Property
 
 
 class RegistrationForm(forms.ModelForm):
@@ -70,40 +70,5 @@ class ProfileUpdateForm(forms.ModelForm):
     
 class PropertyForm(forms.ModelForm):
     class Meta:
-        model = AdProperty
-        fields = [
-            'title', 
-            'property_type', 
-            'ad_type', 
-            'price_min', 
-            'price_max', 
-            'deposit', 
-            'rent', 
-            'city', 
-            'postalcode', 
-            'location', 
-            'images', 
-            'area', 
-            'num_bedrooms', 
-            'construction_year', 
-            'description', 
-            'user'
-        ]
-        widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control'}),
-            'property_type': forms.Select(attrs={'class': 'form-control'}),
-            'ad_type': forms.Select(attrs={'class': 'form-control'}),
-            'price_min': forms.NumberInput(attrs={'class': 'form-control'}),
-            'price_max': forms.NumberInput(attrs={'class': 'form-control'}),
-            'deposit': forms.NumberInput(attrs={'class': 'form-control'}),
-            'rent': forms.NumberInput(attrs={'class': 'form-control'}),
-            'city': forms.TextInput(attrs={'class': 'form-control'}),
-            'postalcode': forms.TextInput(attrs={'class': 'form-control'}),
-            'location': forms.TextInput(attrs={'class': 'form-control'}),
-            'images': forms.ClearableFileInput(attrs={'class': 'form-control'}),
-            'area': forms.NumberInput(attrs={'class': 'form-control'}),
-            'num_bedrooms': forms.NumberInput(attrs={'class': 'form-control'}),
-            'construction_year': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'user': forms.Select(attrs={'class': 'form-control'}),
-        }
+        model = Property
+        fields = ['title', 'property_type', 'use_property', 'ad_type', 'price_min', 'price_max', 'deposit', 'rent', 'city', 'postalcode', 'location', 'area', 'num_bedrooms', 'construction_year', 'description']

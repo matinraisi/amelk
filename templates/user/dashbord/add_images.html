@@ -1,0 +1,18 @@
+{% extends "user/dashbord/parent/base.html" %}
+{% load static %}
+{% block title %} amelk {% endblock %}
+{% block content %}
+<div class="main-content">
+    <div class="main-content-inner">
+        <form id="property-form" method="post" action="{% url 'authentication:add_images' property_id=property.id %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="images">آپلود تصاویر (حداکثر 6 تصویر)</label>
+                <input type="file" name="images" id="images" multiple required />
+            </div>
+
+            <button type="submit" class="btn btn-submit">ثبت تصاویر</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

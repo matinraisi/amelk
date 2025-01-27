@@ -1,280 +1,146 @@
 {% extends "user/dashbord/parent/base.html" %}
 {% load static %}
-{% block title %}amelk{% endblock title %}
-{% comment %} content {% endcomment %}
+{% block title %}amelk{% endblock title %}    
 {% block content %}
-
 <div class="main-content">
     <div class="main-content-inner">
-        <div class="button-show-hide show-mb"><span class="body-1">نمایش داشبورد</span></div>
-        <div class="widget-box-2 mb-20">
-            <h5 class="title">اطلاعات</h5>
-            <div class="box-info-property">
-                <fieldset class="box box-fieldset">
-                    <label>عنوان:<span>*</span></label>
-                    <input class="form-control" name="title" placeholder="انتخاب کردن" type="text">
-                </fieldset>
-                <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset"><label>نوع ملک:<span>*</span></label>
-                        <div class="nice-select" ><span class="current">هیچ کدام</span>
-                            <ul class="list" name = "property_type">
-                                <li class="option" >اپارتمان</li>
-                                <li class="option" >ویلا</li>
-                                <li class="option" >کلنگی</li>
-                                <li class="option" >زمین</li>
-                            </ul>
-                        </div>
+        <form id="property-form" method="post" action="{% url 'authentication:addproperty' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="button-show-hide show-mb"><span class="body-1">نمایش داشبورد</span></div>
+            <div class="widget-box-2 mb-20">
+                <h5 class="title">اطلاعات</h5>
+                <div class="box-info-property">
+                    <fieldset class="box box-fieldset">
+                        <label>عنوان:<span>*</span></label>
+                        <input class="form-control" name="title" placeholder="انتخاب کردن" type="text" required>
                     </fieldset>
-                    <fieldset class="box-fieldset"><label>کابری ملک<span>*</span></label>
-                        <div class="nice-select" tabindex="0"><span class="current">هیچ کدام</span>
-                            <ul class="list">
-                                <li class="option" data-value="2">اداری</li>
-                                <li class="option" data-value="3">تجاری</li>
-                                <li class="option" data-value="3">مسکونی</li>
-                            </ul>
-                        </div>
-                    </fieldset>
-                    <fieldset class="box-fieldset">
-                        <label>نوع آگهی<span>*</span></label>
-                        <div class="nice-select type_" tabindex="0">
-                            <span class="current">هیچ کدام</span>
-                            <ul class="list">
-                                <li class="option" data-value="2">خرید</li>
-                                <li class="option" data-value="3">فروش</li>
-                                <li class="option" data-value="4">رهن</li>
-                                <li class="option" data-value="5">اجاره</li>
-                            </ul>
-                        </div>
-                    </fieldset>
-                </div>
-                <div class="box grid-3 gap-30">
-                    <fieldset class="box-fieldset">
-                        <label>شهر/شهرستان:<span>*</span></label> <input class="form-control"
-                            placeholder="شهر خود را وارد کنید" type="text">
-                    </fieldset>
-                    <fieldset class="box-fieldset"><label>کد پستی:<span>*</span></label> <input class="form-control"
-                            placeholder="کد پستی املاک را وارد کنید" type="text">
-                    </fieldset>
-                </div>
-                <div class="box box-fieldset">
-                    <label>
-                        ادرس کامل:
-                        <span>*</span>
-                    </label>
-                    <div class="box-ip">
-                        <input id="location-input" class="form-control" type="text" >
+                    <div class="box grid-3 gap-30">
+                        <fieldset class="box-fieldset">
+                            <label>نوع ملک:<span>*</span></label>
+                            <select class="form-control" name="property_type" required>
+                                <option value="" disabled selected>انتخاب کنید</option>
+                                <option value="apartment">آپارتمان</option>
+                                <option value="villa">ویلا</option>
+                                <option value="land">زمین</option>
+                            </select>
+                        </fieldset>
+                        <fieldset class="box-fieldset">
+                            <label>کابری ملک<span>*</span></label>
+                            <select class="form-control" name="useproperty" required>
+                                <option value="" disabled selected>انتخاب کنید</option>
+                                <option value="administrative">اداری</option>
+                                <option value="commercial">تجاری</option>
+                                <option value="residential">مسکونی</option>
+                            </select>
+                        </fieldset>
+                        <fieldset class="box-fieldset">
+                            <label>نوع آگهی<span>*</span></label>
+                            <select class="form-control type_" tabindex="0" name="ad_type" required>
+                                <option value="" disabled selected>انتخاب کنید</option>
+                                <option value="PURCHASE">خرید</option>
+                                <option value="SALE">فروش</option>
+                                <option value="LEASE">رهن</option>
+                                <option value="RENT">اجاره</option>
+                            </select>
+                        </fieldset>
+                    </div>
+                    <div class="box grid-3 gap-30">
+                        <fieldset class="box-fieldset">
+                            <label>شهر/شهرستان:<span>*</span></label>
+                            <input class="form-control" name="city" placeholder="شهر خود را وارد کنید" type="text" required>
+                        </fieldset>
+                        <fieldset class="box-fieldset">
+                            <label>کد پستی:<span>*</span></label>
+                            <input class="form-control" name="postalcode" placeholder="کد پستی املاک را وارد کنید" type="text" required>
+                        </fieldset>
+                    </div>
+                    <div class="box box-fieldset">
+                        <label>آدرس کامل:<span>*</span></label>
+                        <input id="location-input" name="location" class="form-control" type="text" required>
                     </div>
                 </div>
-                
-            </div>
-        </div>
-        <div class="widget-box-2 mb-20">
-            <h5 class="title">رسانه بارگذاری</h5>
-            <div class="box-uploadfile text-center">
-                <div class="uploadfile">
-                    <div class="btn-upload tf-btn primary"><svg fill="none" height="20" viewbox="0 0 21 20" width="21"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M13.625 14.375V17.1875C13.625 17.705 13.205 18.125 12.6875 18.125H4.5625C4.31386 18.125 4.0754 18.0262 3.89959 17.8504C3.72377 17.6746 3.625 17.4361 3.625 17.1875V6.5625C3.625 6.045 4.045 5.625 4.5625 5.625H6.125C6.54381 5.62472 6.96192 5.65928 7.375 5.72834M13.625 14.375H16.4375C16.955 14.375 17.375 13.955 17.375 13.4375V9.375C17.375 5.65834 14.6725 2.57417 11.125 1.97834C10.7119 1.90928 10.2938 1.87472 9.875 1.875H8.3125C7.795 1.875 7.375 2.295 7.375 2.8125V5.72834M13.625 14.375H8.3125C8.06386 14.375 7.8254 14.2762 7.64959 14.1004C7.47377 13.9246 7.375 13.6861 7.375 13.4375V5.72834M17.375 11.25V9.6875C17.375 8.94158 17.0787 8.22621 16.5512 7.69876C16.0238 7.17132 15.3084 6.875 14.5625 6.875H13.3125C13.0639 6.875 12.8254 6.77623 12.6496 6.60041C12.4738 6.4246 12.375 6.18614 12.375 5.9375V4.6875C12.375 4.31816 12.3023 3.95243 12.1609 3.6112C12.0196 3.26998 11.8124 2.95993 11.5512 2.69876C11.2901 2.4376 10.98 2.23043 10.6388 2.08909C10.2976 1.94775 9.93184 1.875 9.5625 1.875H8.625"
-                                stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
-                        </svg>عکس ها را انتخاب کنید<input class="ip-file" type="file"></div>
-                    <p class="file-name fw-5">یا عکس ها را اینجا بکشید<br><span>(حداکثر 10 عکس)</span>
-                    </p>
+            </div>    
+            <!-- قیمت -->
+            <div class="widget-box-2 mb-20">
+                <h5 class="title">قیمت</h5>
+                <div class="box-price-property">
+                    <div id="additional-fields"></div>
                 </div>
             </div>
-            <div class="box-img-upload">
-                <div class="item-upload file-delete"><img alt="img" src="{% static 'images/home/house-18.jpg' %}">
-                    <span class="icon icon-trash remove-file"></span>
-                </div>
-                <div class="item-upload file-delete"><img alt="img" src="{% static 'images/home/house-23.jpg' %}">
-                    <span class="icon icon-trash"></span>
-                </div>
-                <div class="item-upload file-delete"><img alt="img" src="{% static 'images/home/house-14.jpg' %}">
-                    <span class="icon icon-trash remove-file"></span>
-                </div>
-                <div class="item-upload file-delete"><img alt="img" src="{% static 'images/home/house-32.jpg' %}">
-                    <span class="icon icon-trash remove-file"></span>
-                </div>
-                <div class="item-upload file-delete"><img alt="img" src="{% static 'images/home/house-33.jpg' %}">
-                    <span class="icon icon-trash remove-file"></span>
-                </div>
-            </div>
-        </div>
 
-        <div class="widget-box-2 mb-20">
-            <h5 class="title">قیمت</h5>
-            <div class="box-price-property">
-                <div id="additional-fields">
-
-                </div>
-
-        
-                <!-- فیلدهای اضافی برای نوع آگهی -->
-            </div>
-        </div>
-        <div class="widget-box-2 mb-20">
-            <h5 class="title">اطلاعات تکمیلی</h5>
-            <div class="box grid-3 gap-30">
-                <fieldset class="box-fieldset"><label>اندازه (متر مربع):<span>*</span></label> <input
-                        class="form-control" type="text">
+            <!-- اطلاعات تکمیلی -->
+            <div class="widget-box-2 mb-20">
+                <h5 class="title">اطلاعات تکمیلی</h5>
+                <div class="box grid-3 gap-30">
+                    <fieldset class="box-fieldset">
+                        <label>اندازه (متر مربع):<span>*</span></label>
+                        <input class="form-control" name="area" type="text" required>
                     </fieldset>
-                    <fieldset class="box-fieldset"><label>اتاق ها:<span>*</span></label> <input class="form-control"
-                        type="text"></fieldset>
-                <fieldset class="box-fieldset"><label>اتاق خواب ها:<span>*</span></label> <input class="form-control"
-                        type="text"></fieldset>
+                    <fieldset class="box-fieldset">
+                        <label>اتاق‌ها:<span>*</span></label>
+                        <input class="form-control" name="num_bedrooms" type="text" required>
+                    </fieldset>
+                    <fieldset class="box-fieldset">
+                        <label>سال ساخت:<span>*</span></label>
+                        <input name="construction_year" class="form-control" type="text" required>
+                    </fieldset>
+                </div>
             </div>
 
-            <div class="box grid-2 gap-30">
-                <fieldset class="box-fieldset"><label>سال ساخت:<span>*</span></label> <input class="form-control"
-                        type="text"></fieldset>
+            <!-- امکانات رفاهی -->
+            <div class="widget-box-2 mb-20">
+                <h5 class="title">امکانات رفاهی<span>*</span></h5>
+                <fieldset class="box box-fieldset">
+                    <label>توضیحات:</label>
+                    <textarea class="textarea" name="description" placeholder="توضیحات شما"></textarea>
+                </fieldset>
             </div>
-        </div>
-        <div class="widget-box-2 mb-20">
-            <h5 class="title">امکانات رفاهی<span>*</span></h5>
-            <fieldset class="box box-fieldset">
-                <label>توضیحات:</label>
-                <textarea class="textarea" placeholder="توضیحات شما"></textarea>
-            </fieldset>
-        </div>
-        <div class="box-btn">
-            <a class="tf-btn primary" href="#">ثبت اگهی</a>
-        </div>
-    </div>
-    <div class="footer-dashboard">
-        <p>حق چاپ © 1403 سانتک</p>
+
+            <button type="submit" class="btn btn-submit">ثبت ملک</button>
+        </form>
     </div>
 </div>
+
 <script>
-    // انتخاب نوع آگهی
-    const adTypeSelector = document.querySelector('.type_');
-    const additionalFieldsContainer = document.getElementById('additional-fields');
-    
-    adTypeSelector.addEventListener('click', function () {
-        const selectedAdType = adTypeSelector.querySelector('.current').innerText;
+    document.addEventListener('DOMContentLoaded', function () {
+        const adTypeSelector = document.querySelector('.type_');
+        const additionalFieldsContainer = document.getElementById('additional-fields');
 
-        // حذف فیلدهای قبلی
-        additionalFieldsContainer.innerHTML = '';
+        adTypeSelector.addEventListener('change', function () {
+            const selectedAdType = adTypeSelector.value;
+            additionalFieldsContainer.innerHTML = '';
 
-        if (selectedAdType === 'خرید' || selectedAdType === 'فروش') {
-            // ایجاد فیلدهای حداقل و حداکثر قیمت برای خرید و فروش
-            additionalFieldsContainer.innerHTML = `
-                <fieldset class="box-fieldset">
-                    <label>حداقل قیمت:<span>*</span></label>
-                    <input class="form-control" type="text" placeholder="مقدار مثال: 10000">
-                </fieldset>
-                <fieldset class="box-fieldset">
-                    <label>حداکثر قیمت:<span>*</span></label>
-                    <input class="form-control" type="text" placeholder="مقدار مثال: 50000">
-                </fieldset>
-            `;
-        } else if (selectedAdType === 'اجاره') {
-            // ایجاد فیلدهای پول پیش و قیمت اجاره ماهانه
-            additionalFieldsContainer.innerHTML = `
-                <fieldset class="box-fieldset">
-                    <label>پول پیش:<span>*</span></label>
-                    <input class="form-control" type="text" placeholder="مقدار مثال: 100000">
-                </fieldset>
-                <fieldset class="box-fieldset">
-                    <label>قیمت اجاره ماهانه:<span>*</span></label>
-                    <input class="form-control" type="text" placeholder="مقدار مثال: 1500">
-                </fieldset>
-            `;
-        } else if (selectedAdType === 'رهن') {
-            // ایجاد فیلد پول رهن
-            additionalFieldsContainer.innerHTML = `
-                <fieldset class="box-fieldset">
-                    <label>پول رهن:<span>*</span></label>
-                    <input class="form-control" type="text" placeholder="مقدار مثال: 200000">
-                </fieldset>
-            `;
-        }
-    });
-
-    // رویداد انتخاب نوع آگهی
-    document.querySelectorAll('.nice-select .option').forEach(option => {
-        option.addEventListener('click', function () {
-            // تغییر متن انتخاب شده
-            adTypeSelector.querySelector('.current').innerText = this.innerText;
-            // فعال‌سازی رویداد برای بارگذاری فیلدها
-            adTypeSelector.click();
+            if (selectedAdType === 'PURCHASE' || selectedAdType === 'SALE') {
+                additionalFieldsContainer.innerHTML = `
+                    <fieldset class="box-fieldset">
+                        <label>حداقل قیمت:<span>*</span></label>
+                        <input class="form-control" type="text" name="price_min" placeholder="مقدار مثال: 10000">
+                    </fieldset>
+                    <fieldset class="box-fieldset">
+                        <label>حداکثر قیمت:<span>*</span></label>
+                        <input class="form-control" type="text" name="price_max" placeholder="مقدار مثال: 50000">
+                    </fieldset>
+                `;
+            } else if (selectedAdType === 'RENT') {
+                additionalFieldsContainer.innerHTML = `
+                    <fieldset class="box-fieldset">
+                        <label>پول پیش:<span>*</span></label>
+                        <input class="form-control" type="text" name="deposit" placeholder="مقدار مثال: 100000">
+                    </fieldset>
+                    <fieldset class="box-fieldset">
+                        <label>قیمت اجاره ماهانه:<span>*</span></label>
+                        <input class="form-control" type="text" name="rent" placeholder="مقدار مثال: 1500">
+                    </fieldset>
+                `;
+            } else if (selectedAdType === 'LEASE') {
+                additionalFieldsContainer.innerHTML = `
+                    <fieldset class="box-fieldset">
+                        <label>پول رهن:<span>*</span></label>
+                        <input class="form-control" type="text" name="rent" placeholder="مقدار مثال: 200000">
+                    </fieldset>
+                `;
+            }
         });
     });
 </script>
-{% endblock %}
-
-
-<!-- <div class="box box-fieldset">
-    <label>
-        مکان:
-        <span>*</span>
-    </label>
-    <div class="box-ip">
-        <input id="location-input" class="form-control" type="text" value="هیچ کدام" readonly>
-        <a id="get-location-btn" class="btn-location" href="#">
-            <i class="icon icon-location"></i>
-        </a>
-    </div>
-    <iframe 
-        id="neshan-map"
-        allowfullscreen 
-        class="map" 
-        height="456" 
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-        src="https://neshan.org/maps#c29.488-60.867-5z-0p"
-        style="border:0">
-    </iframe>
-</div>
-<script>
-    const apiKey = "service.25196917a75a440fa854332a3093c082"; // کلید API شما
-    const locationInput = document.getElementById("location-input");
-
-    // دکمه برای دریافت طول و عرض جغرافیایی
-    const getLocationBtn = document.getElementById("get-location-btn");
-
-    // شبیه‌سازی دریافت مختصات (بدون دسترسی به داخل iframe)
-    getLocationBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // استفاده از Geolocation API مرورگر
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    const lat = position.coords.latitude;
-                    const lng = position.coords.longitude;
-
-                    // نمایش مختصات در ورودی
-                    locationInput.value = `Lat: ${lat}, Lng: ${lng}`;
-
-                    // ارسال درخواست به وب‌سرویس برای دریافت آدرس
-                    const url = `https://api.neshan.org/v5/reverse?lat=${lat}&lng=${lng}`;
-                    
-                    // ارسال درخواست با استفاده از Fetch API
-                    fetch(url, {
-                        method: "GET",
-                        headers: {
-                            "Api-Key": apiKey
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.status === "OK" && data.formatted_address) {
-                            locationInput.value = data.formatted_address; // نمایش آدرس کامل
-                        } else {
-                            locationInput.value = "آدرس یافت نشد";
-                        }
-                    })
-                    .catch(error => {
-                        console.error("خطا در ارسال درخواست:", error);
-                        locationInput.value = "خطا در دریافت آدرس";
-                    });
-                },
-                function (error) {
-                    alert("دریافت موقعیت شما ممکن نشد!");
-                }
-            );
-        } else {
-            alert("مرورگر شما از قابلیت دریافت موقعیت پشتیبانی نمی‌کند.");
-        }
-    });
-</script> -->
+{% endblock content %}
