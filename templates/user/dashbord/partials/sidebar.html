@@ -23,7 +23,7 @@
       </div>
       <div class="content">
         <div class="caption-2 text">حساب</div>
-        <div class="text-white fw-6">themesflat@gmail ...</div>
+        <div class="text-white fw-6">{{ user_email|default:"-" }}</div>
       </div>
     </div>
   </div>
@@ -78,10 +78,10 @@
               <path d="M13.8984 4.21875L18.0839 8.40425" stroke="#F1FAEE" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width="1.5"></path>
             </g>
-          </svg>ویژگی ها من
+          </svg>درخواست های من
         </a>
       </li>
-      <li class="nav-menu-item">
+      <!-- <li class="nav-menu-item">
         <a class="nav-menu-link {% if request.path == '/users/my-favorites/' %}active{% endif %}" href="{% url 'authentication:myfavorites' %}">
           <svg fill="none" height="22" viewbox="0 0 22 22" width="22" xmlns="http://www.w3.org/2000/svg">
             <g opacity="0.2">
@@ -94,7 +94,7 @@
             </g>
           </svg>مورد علاقه من
         </a>
-      </li>
+      </li> -->
       <li class="nav-menu-item">
         <a class="nav-menu-link {% if request.path == '/users/addproperty/' %}active{% endif %}" href="{% url 'authentication:addproperty' %}">
           <svg fill="none" height="22" viewbox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">

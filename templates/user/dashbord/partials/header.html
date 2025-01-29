@@ -42,7 +42,7 @@
                 <img alt="avt" src="{% static 'images/avatar/avt-5.jpg' %}" />
               </div>
               <p class="name">
-                مضراب<span class="icon icon-arr-down">
+                {{ user_email|default:"-" }}<span class="icon icon-arr-down">
 
                 </span>
               </p>

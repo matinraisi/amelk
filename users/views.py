@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import User , UserType ,Property , Image
 from .forms import RegistrationForm, ProfileUpdateForm ,PropertyForm 
+from home.models import ConsultationRequest, SellRequest, RentRequest
 
 def register_view(request):
     if request.method == 'POST':
@@ -102,6 +103,7 @@ def user_profile(request):
         
 @login_required
 def reviews(request):
+    
     return render (request, 'user/dashbord/reviews.html')
 
     
@@ -109,7 +111,17 @@ def reviews(request):
     
 @login_required
 def myproperty(request):
-    return render (request, 'user/dashbord/my-property.html')
+    user = request.user
+    consultation_requests = ConsultationRequest.objects.filter(user=user)
+    sell_requests = SellRequest.objects.filter(user=user)
+    rent_requests = RentRequest.objects.filter(user=user)
+
+    context = {
+        'consultation_requests': consultation_requests,
+        'sell_requests': sell_requests,
+        'rent_requests': rent_requests,
+    }
+    return render(request, 'user/dashbord/my-property.html', context)
 
 
 
@@ -162,3 +174,4 @@ def add_images(request, property_id):
         return redirect('authentication:index_dashboard')
     
     return render(request, 'user/dashbord/add_images.html', {'property': property_instance})
+

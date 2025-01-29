@@ -173,7 +173,7 @@
                       <div class="archive-top">
                         <a class="images-group" href="">
                           <div class="images-style">
-                            <img alt="img" class="lazyload" data-src="{% static 'images/home/house-7.jpg' %}"images/home/house-7.jpg' %}" src="images/home/house-7.jpg" />
+                            <img alt="img" class="lazyload" data-src="{% static 'images/home/house-7.jpg' %}" src="images/home/house-7.jpg" />
                           </div>
                           <div class="top">
                             <ul class="d-flex gap-6">
@@ -215,7 +215,7 @@
                         <div class="content-bottom">
                           <div class="d-flex gap-8 align-items-center">
                             <div class="avatar avt-40 round">
-                              <img alt="avt" src="{% static 'images/avatar/avt-png1.png' %}" />
+                              <img alt="avt" src="{{ property.user.avatar.url }}" />
                             </div><span>{{ property.user.email }}</span>
                           </div>
                           <h6 class="price">{{ property.price_min }}</h6>

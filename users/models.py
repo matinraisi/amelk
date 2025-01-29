@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.contrib.auth import get_user_model
 from django.utils import timezone
+from django_resized import ResizedImageField
 
 class CustomUserManager(BaseUserManager):
     def create_user(self, phone_number, email, password=None, **extra_fields):
@@ -124,7 +125,7 @@ class Property(models.Model):
         verbose_name_plural = "آگهی‌های ملک"
 
 class Image(models.Model):
-    image = models.ImageField(upload_to='property_images/', verbose_name="تصویر")
+    image = ResizedImageField(upload_to='property_images/', crop=['middle', 'center'] , size=[500,500],quality=75, verbose_name="تصویر")
 
     def __str__(self):
         return str(self.image)
